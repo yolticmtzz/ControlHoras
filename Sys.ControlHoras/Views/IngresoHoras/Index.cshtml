@@ -1,0 +1,171 @@
+﻿@using Sys.ControlTiempo.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var mesesSelect = Horas.GetMeses();
+
+}
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Mantenedor Horas</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Horas</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <div class="load">
+
+    </div>
+
+</div>
+
+<!--=====================================
+MODAL AGREGAR EMPLEADO
+======================================-->
+
+<div id="modalAgregarHora" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="~/IngresoHoras/Agregar" class="formAjaxAdd" role="form" method="post" enctype="multipart/form-data">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Agregar Hora</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione el Proyecto</label>
+                            @Html.DropDownList("IdProyectoEmpleado", Horas.GetProyectos(), "(Seleccione Proyecto)", new { @class = "form-control input-md text-uppercase", @required = true })
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha</label>
+                            <input type="date" class="form-control input-md text-uppercase" min="@mesesSelect.MesMenor" max="@mesesSelect.MesMayor" name="Fecha" id="nuevoFecha" placeholder="Fecha inicio del proyecto" maxlength="50" required onkeypress="return checkText(event)">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad de horas</label>
+                            <input type="text" min="1" name="Hora" class="form-control input-md text-uppercase" value="1" onkeypress="return checkNumeros(this, event)" required />
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary btnAjaxAdd">Guardar Hora</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--=====================================
+MODAL EDITAR EMPLEADO
+======================================-->
+<div id="modalEditarHora" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form role="form" method="post" class="formAjaxEdit" action="~/IngresoHoras/Editar" enctype="multipart/form-data">
+                <input type="hidden" name="IdIngresoHora" id="editarIdIngresoHora">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Editar Hora</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione el Proyecto</label>
+                            @Html.DropDownList("IdProyectoEmpleado", Horas.GetProyectos(), "(Seleccione Proyecto)", new { @class = "form-control input-md text-uppercase", @required = true, id = "editarIdProyectoEmpleado" })
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha</label>
+                            <input type="date" class="form-control input-md text-uppercase" name="Fecha" min="@mesesSelect.MesMenor" max="@mesesSelect.MesMayor" id="editarFecha" placeholder="Fecha inicio del proyecto" maxlength="50" required onkeypress="return checkText(event)" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad de horas</label>
+                            <input type="text" min="1" name="Hora" id="editarHora" class="form-control input-md text-uppercase" value="1" onkeypress="return checkNumeros(this, event)" required />
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary btnAjaxEdit">Editar proyecto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="modalAgregarEmpleadoProyecto" class="modal fade">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <form role="form" method="post" enctype="multipart/form-data">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Ingreso de datos</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione empleado</label>
+                            <input type="hidden" name="" id="idProyecto_EmpleadoProyecto" />
+                            @Html.DropDownList("idEmpleado_EmpleadoProyecto", ProyectosHelper.GetEmpleados(), "(Seleccione Empleado)", new { @class = "form-control input-md text-uppercase", @required = true })
+                        </div>
+                        <div class="form-group empleados-asignados">
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="button" class="btn btn-primary btnAddEmpleadoProyecto">Ingresar Datos</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Content/js/crud-horas.js"></script>
+
+}

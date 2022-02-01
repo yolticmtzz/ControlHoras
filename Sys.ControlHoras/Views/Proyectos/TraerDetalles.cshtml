@@ -1,0 +1,33 @@
+﻿@using Model;
+@model List<ProyectoEmpleado>
+@{
+    Layout = null;
+}
+
+
+
+<table id="proyectos" class="table table-bordered table-hover" style="width:100%">
+
+    <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdProyectoEmpleado</td>
+                <td>@item.Empleado.Nombre</td>
+                <td>
+                    <button type="button" class="btn btn-danger btnAnularProyectoEmpleado" idproyectoempleado="@item.IdProyectoEmpleado" title="Anular">Eliminar <i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

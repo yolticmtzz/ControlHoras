@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8718b2f398724b5498a8664bd77ca8bc" Name="Diagram1">
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.Bitacora" Width="1.5" PointX="6" PointY="11.375" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.Cliente" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.Empleado" Width="1.5" PointX="3.75" PointY="7" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.IngresoHora" Width="1.5" PointX="10.5" PointY="7.5" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.Menu" Width="1.5" PointX="2.25" PointY="12" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.MesProceso" Width="1.5" PointX="6.5" PointY="1" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.Perfil" Width="1.5" PointX="1.5" PointY="4.875" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.PerfilPrivilegio" Width="1.5" PointX="3.75" PointY="3.875" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.Privilegio" Width="1.5" PointX="1.5" PointY="0.625" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.ProyectoEmpleado" Width="1.5" PointX="8.25" PointY="7.5" />
+        <AssociationConnector Association="ControlHoraProyectoModel.FK_Bitacora_Empleado" />
+        <AssociationConnector Association="ControlHoraProyectoModel.FK_Empleado_Perfil" />
+        <AssociationConnector Association="ControlHoraProyectoModel.FK_ProyectoEmpleado_Empleado" />
+        <AssociationConnector Association="ControlHoraProyectoModel.FK_IngresoHora_ProyectoEmpleado" />
+        <AssociationConnector Association="ControlHoraProyectoModel.FK_Privilegio_Menu" />
+        <AssociationConnector Association="ControlHoraProyectoModel.FK_PerfilPrivilegio_Perfil" />
+        <AssociationConnector Association="ControlHoraProyectoModel.FK_PerfilPrivilegio_Privilegio" />
+        <EntityTypeShape EntityType="ControlHoraProyectoModel.Proyecto" Width="1.5" PointX="6" PointY="5.375" />
+        <AssociationConnector Association="ControlHoraProyectoModel.FK_Proyecto_Cliente" />
+        <AssociationConnector Association="ControlHoraProyectoModel.FK_ProyectoEmpleado_Proyecto" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

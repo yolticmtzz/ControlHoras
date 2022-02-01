@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Entrar al Sistema de Produccion";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+
+<div class="login-box">
+
+    <div class="login-logo">
+        <a href=""><b>SOINDUS</b></a>
+    </div>
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Ingrese sus datos de usuario</p>
+            <form method="post">
+                <div class="input-group mb-3">
+                    <input type="email" name="correo" class="form-control" placeholder="Correo" onkeypress="return checkCorreo(event)" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+
+                    <input type="password" name="clave" class="form-control" placeholder="Clave" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                    </div>
+                </div>
+            </form>
+            @if (@TempData["Error"] != null)
+            {
+                <br><div class="alert alert-danger">@TempData["Error"]</div>
+            }
+
+        </div>
+    </div>
+</div>

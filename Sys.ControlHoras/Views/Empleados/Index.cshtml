@@ -1,0 +1,155 @@
+﻿@using Sys.ControlTiempo.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Mantenedor Consultores</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Consultores</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <div class="load">
+
+    </div>
+
+</div>
+
+<!--=====================================
+MODAL AGREGAR EMPLEADO
+======================================-->
+
+<div id="modalAgregarEmpleado" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="~/Empleados/Agregar" class="formAjaxAdd" role="form" method="post" enctype="multipart/form-data">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Agregar Consultor</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione el perfil</label>
+
+                            @Html.DropDownList("IdPerfil", PerfilHelpers.GetPerfiles(), "(Seleccione Perfil)", new { @class = "form-control input-md text-uppercase", @required = true })
+                        </div>
+                        <!-- ENTRADA PARA EL NOMBRE -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ingrese Nombre del empleado</label>
+                            <input type="text" class="form-control input-md text-uppercase" name="Nombre" placeholder="Nombre Completo" maxlength="50" required onkeypress="return checkText(event)">
+                        </div>
+                        <!-- ENTRADA PARA EL RUT -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ingrese RUT del empleado</label>
+                            <input type="text" class="form-control input-md text-uppercase" name="Rut" placeholder="Ingresar RUT sin puntos ni guión" maxlength="9" required onkeypress="return checkLN(event)">
+                        </div>
+                        <!-- ENTRADA PARA LA CONTRASEÑA -->
+                        <div class="form-group">
+                            <label>Ingrese clave del empleado</label>
+                            <input type="password" class="form-control input-md" name="Clave" placeholder="Ingresar contraseña" required onkeypress="return checkClave(event)">
+                        </div>
+                        <!-- ENTRADA PARA EL CORREO -->
+                        <div class="form-group">
+                            <label>Ingrese Correo Del Empleado</label>
+                            <input type="email" class="form-control input-md text-uppercase" name="Correo" id="nuevoCorreo" placeholder="Correo Electrónico" maxlength="50" required onkeypress="return checkCorreo(event)">
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary btnAjaxAdd">Guardar empleado</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--=====================================
+MODAL EDITAR EMPLEADO
+======================================-->
+<div id="modalEditarEmpleado" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form role="form" method="post" class="formAjaxEdit" action="~/Empleados/Editar" enctype="multipart/form-data">
+                <input type="hidden" name="IdEmpleado" id="editarIdEmpleado">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Editar empleado</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione el perfil</label>
+                            @Html.DropDownList("IdPerfil", PerfilHelpers.GetPerfiles(), "(Seleccione Perfil)", new { @class = "form-control input-md text-uppercase", @required = true, id = "editarPerfil"})
+                        </div>
+                        <!-- ENTRADA PARA EL NOMBRE -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ingrese nombre del empleado</label>
+                            <input type="text" class="form-control input-md text-uppercase" name="Nombre" id="editarNombre" placeholder="Nombre Completo" maxlength="50" required onkeypress="return checkText(event)">
+                        </div>
+                        <!-- ENTRADA PARA EL RUT -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ingrese RUT del empleado</label>
+                            <input type="text" class="form-control input-md text-uppercase" name="Rut" id="editarRut" placeholder="Ingresar RUT sin puntos ni guión" maxlength="9" required onkeypress="return checkLN(event)">
+                        </div>
+                        <!-- ENTRADA PARA LA CONTRASEÑA -->
+                        <div class="form-group">
+                            <label>Ingrese clave del empleado (Solo si quiere cambiarla)</label>
+                            <input type="password" class="form-control input-md" name="Clave" id="editarClave" placeholder="Ingresar contraseña" onkeypress="return checkClave(event)">
+                            <input type="hidden" name="claveAnterior" id="claveAnterior">
+                        </div>
+                        <!-- ENTRADA PARA EL CORREO -->
+                        <div class="form-group">
+                            <label>Ingrese Correo Del Empleado</label>
+                            <input type="email" class="form-control input-md text-uppercase" name="Correo" id="editarCorreo" placeholder="Correo Electrónico" maxlength="50" required onkeypress="return checkCorreo(event)">
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary btnAjaxEdit">Editar empleado</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Content/js/crud-empleados.js"></script>
+
+}

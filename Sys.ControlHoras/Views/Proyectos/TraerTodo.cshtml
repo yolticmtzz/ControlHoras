@@ -1,0 +1,94 @@
+﻿@using Model;
+@model List<Proyecto>
+@{
+    Layout = null;
+}
+
+<section class="content">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Listado De Proyectos</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalAgregarProyecto">Agregar Proyecto</button>
+                        </div>
+
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <table id="proyectos" class="table table-bordered table-hover" style="width:100%">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Cliente</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Termino</th>
+                                    <th>Jornadas Estimadas</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.IdProyecto</td>
+                                    <td>@item.Descripcion</td>
+                                    <td>@item.Cliente.Nombre</td>
+                                    <td>@item.FechaInicio.ToString("yyyy-MM-dd")</td>
+                                    @{
+                                        DateTime fechaFinal = (DateTime)item.FechaFinal;
+                                        <td>@fechaFinal.ToString("yyyy-MM-dd")</td>
+                                        <td>@item.HorasAsignada</td>
+
+                                        switch (item.Estado)
+                                        {
+                                            case 0:
+                                                <td>FINALIZADO</td>
+                                                <td align="center">
+                                                    <button class="btn btn-success btnActivarProyecto" idproyecto="@item.IdProyecto" title="Activar">Activar <i class="fas fa-check"></i></button>
+                                                    <button class="btn btn-warning btnEditarProyecto" idproyecto="@item.IdProyecto" data-toggle="modal" data-target="#modalEditarProyecto" title="Editar"> Editar <i class="fas fa-edit"></i></button>
+                                                    <button class="btn btn-danger btnAnularProyecto" idproyecto="@item.IdProyecto" title="Anular">Eliminar <i class="fas fa-trash"></i></button>
+                                                </td>
+                                                break;
+                                            case 1:
+                                                <td>ACTIVADO</td>
+                                                <td align="center">
+                                                    <button class="btn btn-info modalAgregarEmpleadoProyecto" idproyecto="@item.IdProyecto" title="Agregar Empleado"><i class="fas fa-user-plus"></i></button>
+                                                    <button class="btn btn-primary btnFinalizarProyecto" idproyecto="@item.IdProyecto" title="Finalizar">Finalizar <i class="fas fa-flag-checkered"></i></button>
+                                                    <button class="btn btn-warning btnEditarProyecto" idproyecto="@item.IdProyecto" data-toggle="modal" data-target="#modalEditarProyecto" title="Editar"> Editar <i class="fas fa-edit"></i></button>
+                                                    <button class="btn btn-danger btnAnularProyecto" idproyecto="@item.IdProyecto" title="Anular">Eliminar <i class="fas fa-trash"></i></button>
+                                                </td>
+                                                break;
+                                        }
+
+                                    }
+                                </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+</section>
+

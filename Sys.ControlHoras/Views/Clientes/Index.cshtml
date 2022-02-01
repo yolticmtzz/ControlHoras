@@ -1,0 +1,117 @@
+﻿@using Sys.ControlTiempo.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Mantenedor Clientes</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Clientes</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <div class="load">
+
+    </div>
+
+</div>
+
+<!--=====================================
+MODAL AGREGAR EMPLEADO
+======================================-->
+
+<div id="modalAgregarCliente" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="~/Clientes/Agregar" class="formAjaxAdd" role="form" method="post" enctype="multipart/form-data">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Agregar Clientes</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Nombre Cliente</label>
+                            <input type="text" class="form-control input-md text-uppercase" name="Nombre" id="nuevoNombre" placeholder="Nombre cliente" maxlength="45" required onkeypress="return checkText(event)">
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary btnAjaxAdd">Guardar cliente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--=====================================
+MODAL EDITAR EMPLEADO
+======================================-->
+<div id="modalEditarCliente" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form role="form" method="post" class="formAjaxEdit" action="~/Clientes/Editar" enctype="multipart/form-data">
+                <input type="hidden" name="IdCliente" id="editarIdCliente">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Editar cliente</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
+                        <div class="modal-body">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Nombre Cliente</label>
+                                    <input type="text" class="form-control input-md text-uppercase" name="Nombre" id="editarNombre" placeholder="Nombre cliente" maxlength="45" required onkeypress="return checkText(event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary btnAjaxEdit">Editar cliente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Content/js/crud-clientes.js"></script>
+
+}

@@ -1,0 +1,184 @@
+﻿@using Sys.ControlTiempo.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Mantenedor Proyectos</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Proyectos</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <div class="load">
+
+    </div>
+
+</div>
+
+<!--=====================================
+MODAL AGREGAR EMPLEADO
+======================================-->
+
+<div id="modalAgregarProyecto" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="~/Proyectos/Agregar" class="formAjaxAdd" role="form" method="post" enctype="multipart/form-data">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Agregar Proyecto</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ingrese Nombre Del Proyecto</label>
+                            <input type="text" class="form-control input-md text-uppercase" name="Descripcion" id="nuevoProyecto" placeholder="Nombre del proyecto" maxlength="50" required onkeypress="return checkText(event)">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione el cliente</label>
+                            @Html.DropDownList("IdCliente", ProyectosHelper.GetClientes(), "(Seleccione Cliente)", new { @class = "form-control input-md text-uppercase", @required = true })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Notifique Fecha Inicio Del Proyecto</label>
+                            <input type="date" class="form-control input-md text-uppercase" name="FechaInicio" id="nuevoFecha" placeholder="Fecha inicio del proyecto" maxlength="50" required onkeypress="return checkText(event)" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Notifique Fecha Final Del Proyecto</label>
+                            <input type="date" class="form-control input-md text-uppercase" name="FechaFinal" id="nuevoFechaF" placeholder="Fecha final del proyecto" maxlength="50" required onkeypress="return checkText(event)" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Jornadas</label>
+                            <input type="text" class="form-control input-md text-uppercase" name="HorasAsignada" id="nuevaHoraAsignada" maxlength="50" required onkeypress="return checkNumeros(this, event);">
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary btnAjaxAdd">Guardar proyecto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--=====================================
+MODAL EDITAR EMPLEADO
+======================================-->
+<div id="modalEditarProyecto" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form role="form" method="post" class="formAjaxEdit" action="~/Proyectos/Editar" enctype="multipart/form-data">
+                <input type="hidden" name="IdProyecto" id="editarIdProyecto">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Editar empleado</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ingrese Nombre Del Proyecto</label>
+                            <input type="text" class="form-control input-md text-uppercase" name="Descripcion" id="editarDescripcion" placeholder="Nombre del proyecto" maxlength="50" required onkeypress="return checkText(event)">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione el cliente</label>
+                            @Html.DropDownList("IdCliente", ProyectosHelper.GetClientes(), "(Seleccione Cliente)", new { @class = "form-control input-md text-uppercase", @required = true, id = "editarIdCliente" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Notifique Fecha Inicio Del Proyecto</label>
+                            <input type="date" class="form-control input-md text-uppercase" name="FechaInicio" id="editarFechaInicial" placeholder="Fecha inicio del proyecto" maxlength="50" required onkeypress="return checkText(event)">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Notifique Fecha Final Del Proyecto</label>
+                            <input type="date" class="form-control input-md text-uppercase" name="FechaFinal" id="editarFechaFinal" placeholder="Fecha final del proyecto" maxlength="50" required onkeypress="return checkText(event)">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Jornadas</label>
+                            <input type="text" class="form-control input-md text-uppercase" name="HorasAsignada" id="editarHorasAsignada" maxlength="50" required onkeypress="return checkNumeros(this, event);">
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary btnAjaxEdit">Editar proyecto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="modalAgregarEmpleadoProyecto" class="modal fade">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <form role="form" method="post" enctype="multipart/form-data">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Ingreso de datos</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione empleado</label>
+                            <input type="hidden" name="" id="idProyecto_EmpleadoProyecto" />
+                            @Html.DropDownList("idEmpleado_EmpleadoProyecto", ProyectosHelper.GetEmpleados(), "(Seleccione Empleado)", new { @class = "form-control input-md text-uppercase", @required = true })
+                        </div>
+                        <div class="form-group empleados-asignados">
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="button" class="btn btn-primary btnAddEmpleadoProyecto">Ingresar Datos</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Content/js/crud-proyectos.js"></script>
+
+}

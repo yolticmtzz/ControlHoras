@@ -1,0 +1,652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProduccionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Catalogos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Catalogo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Valor" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleOrden">
+    <Key>
+      <PropertyRef Name="IdDetalleOrden" />
+    </Key>
+    <Property Name="IdDetalleOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdOrden" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="IdTipoProducto" Type="int" Nullable="false" />
+    <Property Name="IdTipoMedida" Type="int" Nullable="false" />
+    <Property Name="IdMedida" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rut" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empresas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreEmpresa" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="CorreoElectronico" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Moneda" Type="varchar" MaxLength="5" />
+    <Property Name="ZonaHoraria_Id" Type="int" />
+    <Property Name="Logo" Type="varchar" MaxLength="50" />
+    <Property Name="Direccion" Type="varchar" MaxLength="250" />
+    <Property Name="Tipo_Id" Type="int" Nullable="false" />
+    <Property Name="Estatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="LineaProduccion">
+    <Key>
+      <PropertyRef Name="IdLineaProduccion" />
+    </Key>
+    <Property Name="IdLineaProduccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" Nullable="false" />
+    <Property Name="IdDetalleOrden" Type="int" Nullable="false" />
+    <Property Name="IdPosicion" Type="int" Nullable="false" />
+    <Property Name="IdLugar" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="valorposicion" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="valorproduccion" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lugar">
+    <Key>
+      <PropertyRef Name="IdLugar" />
+    </Key>
+    <Property Name="IdLugar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maquina">
+    <Key>
+      <PropertyRef Name="IdMaquina" />
+    </Key>
+    <Property Name="IdMaquina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Medida">
+    <Key>
+      <PropertyRef Name="IdMedida" />
+    </Key>
+    <Property Name="IdMedida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orden">
+    <Key>
+      <PropertyRef Name="IdOrden" />
+    </Key>
+    <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="referencia" Type="varchar" MaxLength="50" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parametros">
+    <Key>
+      <PropertyRef Name="IdParamatros" />
+    </Key>
+    <Property Name="IdParamatros" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HorasTrabajo" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="Mes" Type="int" />
+    <Property Name="Año" Type="int" />
+    <Property Name="Paquete" Type="int" />
+  </EntityType>
+  <EntityType Name="Posicion">
+    <Key>
+      <PropertyRef Name="IdPosicion" />
+    </Key>
+    <Property Name="IdPosicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="IdMaquina" Type="int" Nullable="false" />
+    <Property Name="cuota" Type="int" Nullable="false" />
+    <Property Name="valor" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="tiempo" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Semanas">
+    <Key>
+      <PropertyRef Name="IdSemana" />
+    </Key>
+    <Property Name="IdSemana" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mes" Type="int" />
+    <Property Name="Año" Type="int" />
+    <Property Name="Semana" Type="int" />
+    <Property Name="FechaInicio" Type="datetime" />
+    <Property Name="FechaFinal" Type="datetime" />
+    <Property Name="Dias" Type="int" />
+  </EntityType>
+  <EntityType Name="TipoMedida">
+    <Key>
+      <PropertyRef Name="IdTipoMedida" />
+    </Key>
+    <Property Name="IdTipoMedida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoProducto">
+    <Key>
+      <PropertyRef Name="IdTipoProducto" />
+    </Key>
+    <Property Name="IdTipoProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoProductoPosicion">
+    <Key>
+      <PropertyRef Name="IdTipoProductoPosicion" />
+    </Key>
+    <Property Name="IdTipoProductoPosicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdTipoProducto" Type="int" Nullable="false" />
+    <Property Name="IdPosicion" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorreoElectronico" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="EmpresaId" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="Rol_Id" Type="int" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <Association Name="FK_DetalleOrden_Medida">
+    <End Role="Medida" Type="Self.Medida" Multiplicity="1" />
+    <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medida">
+        <PropertyRef Name="IdMedida" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrden_Orden">
+    <End Role="Orden" Type="Self.Orden" Multiplicity="1" />
+    <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orden">
+        <PropertyRef Name="IdOrden" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdOrden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrden_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrden_TipoMedida">
+    <End Role="TipoMedida" Type="Self.TipoMedida" Multiplicity="1" />
+    <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoMedida">
+        <PropertyRef Name="IdTipoMedida" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdTipoMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrden_TipoProducto">
+    <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="1" />
+    <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoProducto">
+        <PropertyRef Name="IdTipoProducto" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdTipoProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaProduccion_DetalleOrden1">
+    <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="1" />
+    <End Role="LineaProduccion" Type="Self.LineaProduccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetalleOrden">
+        <PropertyRef Name="IdDetalleOrden" />
+      </Principal>
+      <Dependent Role="LineaProduccion">
+        <PropertyRef Name="IdDetalleOrden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaProduccion_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="LineaProduccion" Type="Self.LineaProduccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="LineaProduccion">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaProduccion_Lugar">
+    <End Role="Lugar" Type="Self.Lugar" Multiplicity="1" />
+    <End Role="LineaProduccion" Type="Self.LineaProduccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lugar">
+        <PropertyRef Name="IdLugar" />
+      </Principal>
+      <Dependent Role="LineaProduccion">
+        <PropertyRef Name="IdLugar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaProduccion_Posicion">
+    <End Role="Posicion" Type="Self.Posicion" Multiplicity="1" />
+    <End Role="LineaProduccion" Type="Self.LineaProduccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posicion">
+        <PropertyRef Name="IdPosicion" />
+      </Principal>
+      <Dependent Role="LineaProduccion">
+        <PropertyRef Name="IdPosicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Posicion_Maquina">
+    <End Role="Maquina" Type="Self.Maquina" Multiplicity="1" />
+    <End Role="Posicion" Type="Self.Posicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maquina">
+        <PropertyRef Name="IdMaquina" />
+      </Principal>
+      <Dependent Role="Posicion">
+        <PropertyRef Name="IdMaquina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoProductoPosicion_Posicion">
+    <End Role="Posicion" Type="Self.Posicion" Multiplicity="1" />
+    <End Role="TipoProductoPosicion" Type="Self.TipoProductoPosicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posicion">
+        <PropertyRef Name="IdPosicion" />
+      </Principal>
+      <Dependent Role="TipoProductoPosicion">
+        <PropertyRef Name="IdPosicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoProductoPosicion_TipoProducto">
+    <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="1" />
+    <End Role="TipoProductoPosicion" Type="Self.TipoProductoPosicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoProducto">
+        <PropertyRef Name="IdTipoProducto" />
+      </Principal>
+      <Dependent Role="TipoProductoPosicion">
+        <PropertyRef Name="IdTipoProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Catalogos">
+    <End Role="Catalogos" Type="Self.Catalogos" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Empresas">
+    <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="pa_cons_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pa_cons_estilo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pa_cons_lugar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pa_cons_maquina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pa_cons_produccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEmpleado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_cons_tipotalla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pa_del_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_del_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_del_estilo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_del_lugar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_del_maquina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_del_orden" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ordencorte" Type="varchar" Mode="In" />
+    <Parameter Name="idtipotalla" Type="int" Mode="In" />
+    <Parameter Name="idproducto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_del_posicion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_del_produccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_del_talla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_del_tipotalla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="rut" Type="varchar" Mode="In" />
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_estilo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="codestilo" Type="varchar" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="idposicion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_lugar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_maquina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_orden" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="ordencorte" Type="varchar" Mode="In" />
+    <Parameter Name="referencia" Type="varchar" Mode="In" />
+    <Parameter Name="idcliente" Type="int" Mode="In" />
+    <Parameter Name="idestilo" Type="int" Mode="In" />
+    <Parameter Name="idproducto" Type="int" Mode="In" />
+    <Parameter Name="cantidad" Type="money" Mode="In" />
+    <Parameter Name="idtipotalla" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_parametros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="horas" Type="decimal" Mode="In" />
+    <Parameter Name="mes" Type="int" Mode="In" />
+    <Parameter Name="año" Type="int" Mode="In" />
+    <Parameter Name="paquete" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_posicion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="idmaquina" Type="int" Mode="In" />
+    <Parameter Name="cuota" Type="int" Mode="In" />
+    <Parameter Name="valor" Type="money" Mode="In" />
+    <Parameter Name="tiempo" Type="money" Mode="In" />
+    <Parameter Name="idlugar" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_produccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="fecha" Type="varchar" Mode="In" />
+    <Parameter Name="idempleado" Type="int" Mode="In" />
+    <Parameter Name="idcorte" Type="int" Mode="In" />
+    <Parameter Name="idposicion" Type="int" Mode="In" />
+    <Parameter Name="idtalla" Type="int" Mode="In" />
+    <Parameter Name="cantidad" Type="money" Mode="In" />
+    <Parameter Name="valorposicion" Type="money" Mode="In" />
+    <Parameter Name="valorproduccion" Type="money" Mode="In" />
+    <Parameter Name="idlugar" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_semanas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dias" Type="int" Mode="In" />
+    <Parameter Name="mes" Type="int" Mode="In" />
+    <Parameter Name="año" Type="int" Mode="In" />
+    <Parameter Name="semana" Type="int" Mode="In" />
+    <Parameter Name="fechainicio" Type="date" Mode="In" />
+    <Parameter Name="fechafinal" Type="date" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_talla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="talla" Type="varchar" Mode="In" />
+    <Parameter Name="idtipotalla" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_tipo_talla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pa_ins_tipotalla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pa_obtenerPosicion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrdenCorte" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_obtenerPosicionCorte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrdenCorte" Type="int" Mode="In" />
+    <Parameter Name="IdEmpleado" Type="int" Mode="In" />
+    <Parameter Name="fecha" Type="date" Mode="In" />
+  </Function>
+  <Function Name="pa_reporteProduccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pa_select_chequeaproduccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idcorte" Type="int" Mode="In" />
+    <Parameter Name="idposicion" Type="int" Mode="In" />
+    <Parameter Name="mayorporcentaje" Type="int" Mode="In" />
+    <Parameter Name="fechainicio" Type="date" Mode="In" />
+    <Parameter Name="fechafinal" Type="date" Mode="In" />
+  </Function>
+  <Function Name="pa_select_chequeaproduccionDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="corte" Type="varchar" Mode="In" />
+    <Parameter Name="idposicion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_select_estiloposicion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idestilo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_select_estilos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pa_select_ganadoconsemana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idempleadod" Type="int" Mode="In" />
+    <Parameter Name="idempleadoh" Type="int" Mode="In" />
+    <Parameter Name="fechainicio" Type="date" Mode="In" />
+    <Parameter Name="fechafinal" Type="date" Mode="In" />
+  </Function>
+  <Function Name="pa_select_informedeestilosposicion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idestilo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_select_informedeposiciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idcorte" Type="int" Mode="In" />
+    <Parameter Name="fecha" Type="date" Mode="In" />
+  </Function>
+  <Function Name="pa_select_informeposiciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idcorte" Type="int" Mode="In" />
+    <Parameter Name="fecha" Type="date" Mode="In" />
+  </Function>
+  <Function Name="pa_select_parametros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pa_select_posiciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pa_select_produccionbajoporcentaje" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idempleadod" Type="int" Mode="In" />
+    <Parameter Name="idempleadoh" Type="int" Mode="In" />
+    <Parameter Name="fechainicio" Type="date" Mode="In" />
+    <Parameter Name="fechafinal" Type="date" Mode="In" />
+    <Parameter Name="porcentaje" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_select_produccionposicion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idcorte" Type="int" Mode="In" />
+    <Parameter Name="idposicion" Type="int" Mode="In" />
+    <Parameter Name="fechainicio" Type="date" Mode="In" />
+    <Parameter Name="fechafinal" Type="date" Mode="In" />
+  </Function>
+  <Function Name="pa_select_semanas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mes" Type="int" Mode="In" />
+    <Parameter Name="año" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pa_select_totalganadotrabajador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idempleadod" Type="int" Mode="In" />
+    <Parameter Name="idempleadoh" Type="int" Mode="In" />
+    <Parameter Name="fechainicio" Type="date" Mode="In" />
+    <Parameter Name="fechafinal" Type="date" Mode="In" />
+  </Function>
+  <Function Name="pa_select_totalganadotrabajadordetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idempleadod" Type="int" Mode="In" />
+    <Parameter Name="fechainicio" Type="date" Mode="In" />
+    <Parameter Name="fechafinal" Type="date" Mode="In" />
+  </Function>
+  <EntityContainer Name="ProduccionModelStoreContainer">
+    <EntitySet Name="Catalogos" EntityType="Self.Catalogos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetalleOrden" EntityType="Self.DetalleOrden" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LineaProduccion" EntityType="Self.LineaProduccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lugar" EntityType="Self.Lugar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maquina" EntityType="Self.Maquina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medida" EntityType="Self.Medida" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orden" EntityType="Self.Orden" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parametros" EntityType="Self.Parametros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Posicion" EntityType="Self.Posicion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Semanas" EntityType="Self.Semanas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoMedida" EntityType="Self.TipoMedida" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoProducto" EntityType="Self.TipoProducto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoProductoPosicion" EntityType="Self.TipoProductoPosicion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DetalleOrden_Medida" Association="Self.FK_DetalleOrden_Medida">
+      <End Role="Medida" EntitySet="Medida" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrden_Orden" Association="Self.FK_DetalleOrden_Orden">
+      <End Role="Orden" EntitySet="Orden" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrden_Producto" Association="Self.FK_DetalleOrden_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrden_TipoMedida" Association="Self.FK_DetalleOrden_TipoMedida">
+      <End Role="TipoMedida" EntitySet="TipoMedida" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrden_TipoProducto" Association="Self.FK_DetalleOrden_TipoProducto">
+      <End Role="TipoProducto" EntitySet="TipoProducto" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaProduccion_DetalleOrden1" Association="Self.FK_LineaProduccion_DetalleOrden1">
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+      <End Role="LineaProduccion" EntitySet="LineaProduccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaProduccion_Empleado" Association="Self.FK_LineaProduccion_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="LineaProduccion" EntitySet="LineaProduccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaProduccion_Lugar" Association="Self.FK_LineaProduccion_Lugar">
+      <End Role="Lugar" EntitySet="Lugar" />
+      <End Role="LineaProduccion" EntitySet="LineaProduccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaProduccion_Posicion" Association="Self.FK_LineaProduccion_Posicion">
+      <End Role="Posicion" EntitySet="Posicion" />
+      <End Role="LineaProduccion" EntitySet="LineaProduccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Cliente" Association="Self.FK_Orden_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Posicion_Maquina" Association="Self.FK_Posicion_Maquina">
+      <End Role="Maquina" EntitySet="Maquina" />
+      <End Role="Posicion" EntitySet="Posicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoProductoPosicion_Posicion" Association="Self.FK_TipoProductoPosicion_Posicion">
+      <End Role="Posicion" EntitySet="Posicion" />
+      <End Role="TipoProductoPosicion" EntitySet="TipoProductoPosicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoProductoPosicion_TipoProducto" Association="Self.FK_TipoProductoPosicion_TipoProducto">
+      <End Role="TipoProducto" EntitySet="TipoProducto" />
+      <End Role="TipoProductoPosicion" EntitySet="TipoProductoPosicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Catalogos" Association="Self.FK_Usuarios_Catalogos">
+      <End Role="Catalogos" EntitySet="Catalogos" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Empresas" Association="Self.FK_Usuarios_Empresas">
+      <End Role="Empresas" EntitySet="Empresas" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

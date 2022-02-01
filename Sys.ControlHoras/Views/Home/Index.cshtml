@@ -1,0 +1,250 @@
+﻿@using Sys.ControlTiempo.Models
+@{
+    Layout = "~/Views/Shared/_Layout_Home.cshtml";
+    var idPerfil = Int32.Parse(Session["Usuario_PERFIL"].ToString());
+}
+@section css
+{
+
+}
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+        <div class="container-fluid">
+
+            <div class="row mb-2">
+
+                <div class="col-sm-6">
+                    <h1>@HttpContext.Current.Session["Usuario_NOMBRE"]</h1>
+                    <p>@HttpContext.Current.Session["Usuario_PERFIL_NOMBRE"]</p>
+                </div>
+
+                <div class="col-sm-6">
+
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                    </ol>
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+
+    </section>
+    <section class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-12">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Mis horas</h3>
+
+                            <div class="card-tools">
+                                @if (idPerfil == 1)
+                                {
+                                    <button type="button" class="btn btn-secondary pull-right" data-toggle="modal" data-target="#modalReporteGeneral">Reporte General</button>
+                                }
+                                <button type="button" class="btn btn-secondary pull-right" data-toggle="modal" data-target="#modalReporteUsuario">Mi Reporte</button>
+                            </div>
+
+                        </div>
+
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div id="calendar"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</div>
+<div id="modalReporteUsuario" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="~/Home/ReporteUsuario" role="form" id="formHome" method="post" enctype="multipart/form-data" target="_blank">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Mi Reporte</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione el Proyecto/s</label>
+                            @Html.DropDownList("IdProyectos", Horas.GetProyectosGeneralesPorEmpleado(), new { @class = "multiple",id = "", multiple = "multiple", data_plugin_multiselect = "", data_plugin_options = "{ \"maxHeight\": 600, \"enableCaseInsensitiveFiltering\" : true }" })
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Fecha Inicio</label>
+                                    <input type="date" class="form-control input-md text-uppercase" name="FechaInicial">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Fecha Termino</label>
+                                    <input type="date" class="form-control input-md text-uppercase" name="FechaFinal">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label><input type="checkbox" name="Historico"/>    ¿Historico? (Exportará una lista de todas las horas ingresadas sin filtro)</label>
+                            <input type="checkbox" style="display:none"  name="Excel" id="esExcel"/> 
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary" onclick="validarExcel(event, false)">Exportar PDF</button>
+                    <button type="submit" class="btn btn-primary" onclick="validarExcel(event, true)">Exportar EXCEL</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (idPerfil == 1) {
+<div id="modalReporteGeneral" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="~/Home/ReporteGeneral" role="form" method="post" enctype="multipart/form-data" target="_blank">
+                <!--=====================================
+                CABEZA DEL MODAL
+                ======================================-->
+                <div class="modal-header" style="background:#3c8dbc; color:white">
+                    <h4 class="modal-title">Reporte General</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione el/los Empleado/s</label>
+                            @Html.DropDownList("IdEmpleados", EmpleadoHelper.GetEmpleados(), new { @class = "multiple", multiple = "multiple", data_plugin_multiselect = "", data_plugin_options = "{ \"maxHeight\": 600, \"enableCaseInsensitiveFiltering\" : true }" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione el/los Proyecto/s</label>
+                            @Html.DropDownList("IdProyectos", Horas.GetProyectosGenerales(), new { @class = "multiple", id = "",multiple = "multiple", data_plugin_multiselect = "", data_plugin_options = "{ \"maxHeight\": 600, \"enableCaseInsensitiveFiltering\" : true }" })
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Fecha Inicio</label>
+                                    <input type="date" class="form-control input-md text-uppercase" name="FechaInicial">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Fecha Termino</label>
+                                    <input type="date" class="form-control input-md text-uppercase" name="FechaFinal">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label><input type="checkbox" name="Historico" />    ¿Historico? (Exportará una lista de todas las horas ingresadas sin filtro)</label>
+                            <input type="checkbox" style="display:none" name="Excel" id="esExcelGeneral" />
+                        </div>
+                    </div>
+                </div>
+                <!--=====================================
+                PIE DEL MODAL
+                ======================================-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary" onclick="validarExcelGeneral(event, false)">Exportar PDF</button>
+                    <button type="submit" class="btn btn-primary" onclick="validarExcelGeneral(event, true)">Exportar EXCEL</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+}
+
+
+
+    @section scripts
+{
+
+        <script>
+            $(function () {
+                $('.multiple').select2({
+                });
+                cargaCalendario();
+
+
+                $('.fade').on('hidden.bs.modal', function () {
+                    $("input").val("");
+                    $("select").val("");
+                });
+
+
+            });
+
+            function validarExcel(element, bool) {
+                $('#esExcel').prop('checked', bool);
+            }
+            function validarExcelGeneral(element, bool) {
+                $('#esExcelGeneral').prop('checked', bool);
+            }
+            function cargaCalendario() {
+
+                $.get(urlGeneral + 'Home/TraerCalendario', function (data) {
+
+
+
+                    var calendarEL = document.getElementById("calendar")
+
+                    var calendar = new FullCalendar.Calendar(calendarEL, {
+                        locale: 'es',
+                        height: 600,
+                        contentHeight: 550,
+                        plugins: ['interaction', 'dayGrid'],
+                        header: {
+                            left: 'prevYear, prev,next, nextYear today',
+                            center: 'title',
+                            right: 'dayGridMonth'
+                        },
+                        eventLimit: true,
+                        eventClick: function (e) {
+                            console.log(e.id)
+                        },
+                        eventRender: function (info) {
+                            $(info.el).tooltip({ title: info.event.title });
+                        },
+                        events: data.Result
+                    });
+
+                    calendar.render();
+
+                });
+
+
+
+
+            }
+
+
+        </script>
+
+
+    }

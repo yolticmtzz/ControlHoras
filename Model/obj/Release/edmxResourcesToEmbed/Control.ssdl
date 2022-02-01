@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ControlHoraProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bitacora">
+    <Key>
+      <PropertyRef Name="IdBitacora" />
+    </Key>
+    <Property Name="IdBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" Nullable="false" />
+    <Property Name="Bitacora" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rut" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="UltimoLogin" Type="datetime" />
+    <Property Name="IdPerfil" Type="int" Nullable="false" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IngresoHora">
+    <Key>
+      <PropertyRef Name="IdIngresoHora" />
+    </Key>
+    <Property Name="IdIngresoHora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProyectoEmpleado" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Hora" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="IdMenu" />
+    </Key>
+    <Property Name="IdMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Clase" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Archivo" Type="varchar" MaxLength="50" />
+    <Property Name="Icono" Type="varchar" MaxLength="50" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MesProceso">
+    <Key>
+      <PropertyRef Name="IdMesProceso" />
+    </Key>
+    <Property Name="IdMesProceso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnioMes" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="Estado" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Perfil">
+    <Key>
+      <PropertyRef Name="IdPerfil" />
+    </Key>
+    <Property Name="IdPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PerfilPrivilegio">
+    <Key>
+      <PropertyRef Name="IdPerfilPrivilegio" />
+    </Key>
+    <Property Name="IdPerfilPrivilegio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPerfil" Type="int" Nullable="false" />
+    <Property Name="IdPrivilegio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Privilegio">
+    <Key>
+      <PropertyRef Name="IdPrivilegio" />
+    </Key>
+    <Property Name="IdPrivilegio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdMenu" Type="int" Nullable="false" />
+    <Property Name="Orden" Type="smallint" Nullable="false" />
+    <Property Name="Archivo" Type="varchar" MaxLength="50" />
+    <Property Name="Icono" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Proyecto">
+    <Key>
+      <PropertyRef Name="IdProyecto" />
+    </Key>
+    <Property Name="IdProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaFinal" Type="datetime" />
+    <Property Name="HorasAsignada" Type="smallint" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+    <Property Name="Estado" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProyectoEmpleado">
+    <Key>
+      <PropertyRef Name="IdProyectoEmpleado" />
+    </Key>
+    <Property Name="IdProyectoEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProyecto" Type="int" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" Nullable="false" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bitacora_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Bitacora">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Perfil">
+    <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="IdPerfil" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="IdPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IngresoHora_ProyectoEmpleado">
+    <End Role="ProyectoEmpleado" Type="Self.ProyectoEmpleado" Multiplicity="1" />
+    <End Role="IngresoHora" Type="Self.IngresoHora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProyectoEmpleado">
+        <PropertyRef Name="IdProyectoEmpleado" />
+      </Principal>
+      <Dependent Role="IngresoHora">
+        <PropertyRef Name="IdProyectoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerfilPrivilegio_Perfil">
+    <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+    <End Role="PerfilPrivilegio" Type="Self.PerfilPrivilegio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="IdPerfil" />
+      </Principal>
+      <Dependent Role="PerfilPrivilegio">
+        <PropertyRef Name="IdPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerfilPrivilegio_Privilegio">
+    <End Role="Privilegio" Type="Self.Privilegio" Multiplicity="1" />
+    <End Role="PerfilPrivilegio" Type="Self.PerfilPrivilegio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Privilegio">
+        <PropertyRef Name="IdPrivilegio" />
+      </Principal>
+      <Dependent Role="PerfilPrivilegio">
+        <PropertyRef Name="IdPrivilegio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Privilegio_Menu">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="Privilegio" Type="Self.Privilegio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="IdMenu" />
+      </Principal>
+      <Dependent Role="Privilegio">
+        <PropertyRef Name="IdMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoEmpleado_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="ProyectoEmpleado" Type="Self.ProyectoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="ProyectoEmpleado">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoEmpleado_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="ProyectoEmpleado" Type="Self.ProyectoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="IdProyecto" />
+      </Principal>
+      <Dependent Role="ProyectoEmpleado">
+        <PropertyRef Name="IdProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ControlHoraProyectoModelStoreContainer">
+    <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IngresoHora" EntityType="Self.IngresoHora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MesProceso" EntityType="Self.MesProceso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PerfilPrivilegio" EntityType="Self.PerfilPrivilegio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Privilegio" EntityType="Self.Privilegio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProyectoEmpleado" EntityType="Self.ProyectoEmpleado" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Bitacora_Empleado" Association="Self.FK_Bitacora_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Bitacora" EntitySet="Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Perfil" Association="Self.FK_Empleado_Perfil">
+      <End Role="Perfil" EntitySet="Perfil" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IngresoHora_ProyectoEmpleado" Association="Self.FK_IngresoHora_ProyectoEmpleado">
+      <End Role="ProyectoEmpleado" EntitySet="ProyectoEmpleado" />
+      <End Role="IngresoHora" EntitySet="IngresoHora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PerfilPrivilegio_Perfil" Association="Self.FK_PerfilPrivilegio_Perfil">
+      <End Role="Perfil" EntitySet="Perfil" />
+      <End Role="PerfilPrivilegio" EntitySet="PerfilPrivilegio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PerfilPrivilegio_Privilegio" Association="Self.FK_PerfilPrivilegio_Privilegio">
+      <End Role="Privilegio" EntitySet="Privilegio" />
+      <End Role="PerfilPrivilegio" EntitySet="PerfilPrivilegio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Privilegio_Menu" Association="Self.FK_Privilegio_Menu">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="Privilegio" EntitySet="Privilegio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_Cliente" Association="Self.FK_Proyecto_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoEmpleado_Empleado" Association="Self.FK_ProyectoEmpleado_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="ProyectoEmpleado" EntitySet="ProyectoEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoEmpleado_Proyecto" Association="Self.FK_ProyectoEmpleado_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="ProyectoEmpleado" EntitySet="ProyectoEmpleado" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

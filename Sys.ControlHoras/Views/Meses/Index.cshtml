@@ -1,0 +1,76 @@
+﻿@using Sys.ControlTiempo.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Mantenedor Meses</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Meses Activos</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-12">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h3 class="card-title">Listado De Meses</h3>
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.DropDownList("Anio", ProyectosHelper.GetAnios(), "(Seleccione Año)", new { @class = "form-control input-md text-uppercase", @required = true, id = "comboAnio" })
+                                </div>
+                                <div class="col-4" style="align-items: flex-end; text-align: right">
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-primary pull-right" onclick="window.location.href='@Url.Action("Agregar")'">Agregar Mes</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="load">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+</div>
+@section scripts
+{
+    <script src="~/Content/js/crud-meses.js"></script>
+
+}

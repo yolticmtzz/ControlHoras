@@ -1,0 +1,104 @@
+﻿
+@using Model
+
+@model List<MesProceso>
+
+@{
+    Layout = null;
+}
+
+<table id="meses" class="table table-bordered table-hover" style="width:100%">
+
+    <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Mes</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdMesProceso</td>
+                <td>@item.AnioMes</td>
+                @switch (item.Estado)
+                {
+                    case 1:
+                        <td>ACTIVADO</td>
+                        <td style="width: 14%; text-align: center">
+                            <button class="btn btn-danger btnFinalizarMes" idmes="@item.IdMesProceso" title="Finalizar">Finalizar</button>
+                            <button class="btn btn-warning btnSuspenderMes" idmes="@item.IdMesProceso" title="Suspender">Suspender </button>
+                        </td>
+                        break;
+                    case 2:
+                        <td>SUSPENDIDO</td>
+                        <td style="width: 14%; text-align: center">
+                            <button class="btn btn-success btnActivarMes" idmes="@item.IdMesProceso" title="Activar">Activar</button>
+                            <button class="btn btn-danger btnFinalizarMes" idmes="@item.IdMesProceso" title="Finalizar">Finalizar</button>
+                        </td>
+                        break;
+                    case 0:
+                        <td>FINALIZADO</td>
+                        <td style="width: 14%; text-align: center">
+                            <button class="btn btn-danger btnActivarMes" idmes="@item.IdMesProceso" title="Activar">Activar</button>
+                            <button class="btn btn-warning btnSuspenderMes" idmes="@item.IdMesProceso" title="Suspender">Suspender </button>
+                        </td>
+                        break;
+                }
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<script>
+    $(document).ready(function () {
+
+        //$('button.btnFinalizarMes').click(function () {
+        //    var idMes = $(this).attr("idmes");
+
+        //    var datos = new FormData();
+        //    datos.append("Id", idMes);
+
+        //    $.ajax({
+        //        url: urlGeneral + 'Meses/Finalizar',
+        //        method: "POST",
+        //        data: datos,
+        //        cache: false,
+        //        contentType: false,
+        //        processData: false,
+        //        success: function (data) {
+        //            if (data.IsSuccess) {
+        //                Swal.fire({
+        //                    title: 'El mes ha sido finalizado',
+        //                    icon: "success",
+        //                    confirmButtonText: '¡Cerrar!',
+        //                }).then((result) => {
+        //                    if (result.isConfirmed) {
+        //                        cargaTabla();
+        //                    }
+        //                })
+        //            } else {
+        //                Swal.fire({
+        //                    icon: 'error',
+        //                    title: 'Error de servidor',
+        //                    text: data.Message,
+        //                })
+        //            }
+        //        }
+
+        //    });
+        //});
+
+
+
+
+
+
+    });
+</script>

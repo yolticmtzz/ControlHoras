@@ -1,0 +1,871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProduccionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entidades" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="pa_cons_cliente" ReturnType="Collection(ProduccionModel.pa_cons_cliente_Result)" />
+    <FunctionImport Name="pa_cons_estilo" ReturnType="Collection(ProduccionModel.pa_cons_estilo_Result)" />
+    <FunctionImport Name="pa_cons_lugar" ReturnType="Collection(ProduccionModel.pa_cons_lugar_Result)" />
+    <FunctionImport Name="pa_cons_maquina" ReturnType="Collection(ProduccionModel.pa_cons_maquina_Result)" />
+    <FunctionImport Name="pa_cons_produccion" ReturnType="Collection(ProduccionModel.pa_cons_produccion_Result)">
+      <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_cons_tipotalla" ReturnType="Collection(ProduccionModel.pa_cons_tipotalla_Result)" />
+    <FunctionImport Name="pa_del_cliente" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_del_empleado" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_del_estilo" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_del_lugar" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_del_maquina" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_del_orden" ReturnType="Collection(String)">
+      <Parameter Name="ordencorte" Mode="In" Type="String" />
+      <Parameter Name="idtipotalla" Mode="In" Type="Int32" />
+      <Parameter Name="idproducto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_del_posicion" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_del_produccion" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_del_talla" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_del_tipotalla" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_cliente">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_empleado">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="rut" Mode="In" Type="String" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_estilo">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="codestilo" Mode="In" Type="String" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+      <Parameter Name="idposicion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_lugar">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_maquina">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_orden">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="ordencorte" Mode="In" Type="String" />
+      <Parameter Name="referencia" Mode="In" Type="String" />
+      <Parameter Name="idcliente" Mode="In" Type="Int32" />
+      <Parameter Name="idestilo" Mode="In" Type="Int32" />
+      <Parameter Name="idproducto" Mode="In" Type="Int32" />
+      <Parameter Name="cantidad" Mode="In" Type="Decimal" />
+      <Parameter Name="idtipotalla" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_parametros">
+      <Parameter Name="horas" Mode="In" Type="Decimal" />
+      <Parameter Name="mes" Mode="In" Type="Int32" />
+      <Parameter Name="año" Mode="In" Type="Int32" />
+      <Parameter Name="paquete" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_posicion">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+      <Parameter Name="idmaquina" Mode="In" Type="Int32" />
+      <Parameter Name="cuota" Mode="In" Type="Int32" />
+      <Parameter Name="valor" Mode="In" Type="Decimal" />
+      <Parameter Name="tiempo" Mode="In" Type="Decimal" />
+      <Parameter Name="idlugar" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_produccion">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="fecha" Mode="In" Type="String" />
+      <Parameter Name="idempleado" Mode="In" Type="Int32" />
+      <Parameter Name="idcorte" Mode="In" Type="Int32" />
+      <Parameter Name="idposicion" Mode="In" Type="Int32" />
+      <Parameter Name="idtalla" Mode="In" Type="Int32" />
+      <Parameter Name="cantidad" Mode="In" Type="Decimal" />
+      <Parameter Name="valorposicion" Mode="In" Type="Decimal" />
+      <Parameter Name="valorproduccion" Mode="In" Type="Decimal" />
+      <Parameter Name="idlugar" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_semanas">
+      <Parameter Name="dias" Mode="In" Type="Int32" />
+      <Parameter Name="mes" Mode="In" Type="Int32" />
+      <Parameter Name="año" Mode="In" Type="Int32" />
+      <Parameter Name="semana" Mode="In" Type="Int32" />
+      <Parameter Name="fechainicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fechafinal" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_talla">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="talla" Mode="In" Type="String" />
+      <Parameter Name="idtipotalla" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_tipo_talla">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pa_ins_tipotalla">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pa_obtenerPosicion" ReturnType="Collection(ProduccionModel.pa_obtenerPosicion_Result)">
+      <Parameter Name="OrdenCorte" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_obtenerPosicionCorte" ReturnType="Collection(ProduccionModel.pa_obtenerPosicionCorte_Result)">
+      <Parameter Name="OrdenCorte" Mode="In" Type="Int32" />
+      <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pa_reporteProduccion" ReturnType="Collection(ProduccionModel.pa_reporteProduccion_Result)" />
+    <FunctionImport Name="pa_select_chequeaproduccion" ReturnType="Collection(ProduccionModel.pa_select_chequeaproduccion_Result)">
+      <Parameter Name="idcorte" Mode="In" Type="Int32" />
+      <Parameter Name="idposicion" Mode="In" Type="Int32" />
+      <Parameter Name="mayorporcentaje" Mode="In" Type="Int32" />
+      <Parameter Name="fechainicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fechafinal" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_chequeaproduccionDetalle" ReturnType="Collection(ProduccionModel.pa_select_chequeaproduccionDetalle_Result)">
+      <Parameter Name="corte" Mode="In" Type="String" />
+      <Parameter Name="idposicion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_estiloposicion" ReturnType="Collection(ProduccionModel.pa_select_estiloposicion_Result)">
+      <Parameter Name="idestilo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_estilos" ReturnType="Collection(ProduccionModel.pa_select_estilos_Result)" />
+    <FunctionImport Name="pa_select_ganadoconsemana" ReturnType="Collection(ProduccionModel.pa_select_ganadoconsemana_Result)">
+      <Parameter Name="idempleadod" Mode="In" Type="Int32" />
+      <Parameter Name="idempleadoh" Mode="In" Type="Int32" />
+      <Parameter Name="fechainicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fechafinal" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_informedeestilosposicion" ReturnType="Collection(ProduccionModel.pa_select_informedeestilosposicion_Result)">
+      <Parameter Name="idestilo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_informedeposiciones" ReturnType="Collection(ProduccionModel.pa_select_informedeposiciones_Result)">
+      <Parameter Name="idcorte" Mode="In" Type="Int32" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_informeposiciones" ReturnType="Collection(ProduccionModel.pa_select_informeposiciones_Result)">
+      <Parameter Name="idcorte" Mode="In" Type="Int32" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_parametros" ReturnType="Collection(ProduccionModel.pa_select_parametros_Result)" />
+    <FunctionImport Name="pa_select_posiciones" ReturnType="Collection(ProduccionModel.pa_select_posiciones_Result)" />
+    <FunctionImport Name="pa_select_produccionbajoporcentaje" ReturnType="Collection(ProduccionModel.pa_select_produccionbajoporcentaje_Result)">
+      <Parameter Name="idempleadod" Mode="In" Type="Int32" />
+      <Parameter Name="idempleadoh" Mode="In" Type="Int32" />
+      <Parameter Name="fechainicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fechafinal" Mode="In" Type="DateTime" />
+      <Parameter Name="porcentaje" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_produccionposicion" ReturnType="Collection(ProduccionModel.pa_select_produccionposicion_Result)">
+      <Parameter Name="idcorte" Mode="In" Type="Int32" />
+      <Parameter Name="idposicion" Mode="In" Type="Int32" />
+      <Parameter Name="fechainicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fechafinal" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_semanas" ReturnType="Collection(ProduccionModel.pa_select_semanas_Result)">
+      <Parameter Name="mes" Mode="In" Type="Int32" />
+      <Parameter Name="año" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_totalganadotrabajador" ReturnType="Collection(ProduccionModel.pa_select_totalganadotrabajador_Result)">
+      <Parameter Name="idempleadod" Mode="In" Type="Int32" />
+      <Parameter Name="idempleadoh" Mode="In" Type="Int32" />
+      <Parameter Name="fechainicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fechafinal" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="pa_select_totalganadotrabajadordetalle" ReturnType="Collection(ProduccionModel.pa_select_totalganadotrabajadordetalle_Result)">
+      <Parameter Name="idempleadod" Mode="In" Type="Int32" />
+      <Parameter Name="fechainicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fechafinal" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="Catalogos" EntityType="ProduccionModel.Catalogos" />
+    <EntitySet Name="Cliente" EntityType="ProduccionModel.Cliente" />
+    <EntitySet Name="DetalleOrden" EntityType="ProduccionModel.DetalleOrden" />
+    <EntitySet Name="Empleado" EntityType="ProduccionModel.Empleado" />
+    <EntitySet Name="Empresas" EntityType="ProduccionModel.Empresas" />
+    <EntitySet Name="LineaProduccion" EntityType="ProduccionModel.LineaProduccion" />
+    <EntitySet Name="Lugar" EntityType="ProduccionModel.Lugar" />
+    <EntitySet Name="Maquina" EntityType="ProduccionModel.Maquina" />
+    <EntitySet Name="Medida" EntityType="ProduccionModel.Medida" />
+    <EntitySet Name="Orden" EntityType="ProduccionModel.Orden" />
+    <EntitySet Name="Parametros" EntityType="ProduccionModel.Parametros" />
+    <EntitySet Name="Posicion" EntityType="ProduccionModel.Posicion" />
+    <EntitySet Name="Producto" EntityType="ProduccionModel.Producto" />
+    <EntitySet Name="Semanas" EntityType="ProduccionModel.Semanas" />
+    <EntitySet Name="TipoMedida" EntityType="ProduccionModel.TipoMedida" />
+    <EntitySet Name="TipoProducto" EntityType="ProduccionModel.TipoProducto" />
+    <EntitySet Name="Usuarios" EntityType="ProduccionModel.Usuarios" />
+    <AssociationSet Name="FK_Usuarios_Catalogos" Association="ProduccionModel.FK_Usuarios_Catalogos">
+      <End Role="Catalogos" EntitySet="Catalogos" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Cliente" Association="ProduccionModel.FK_Orden_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrden_Medida" Association="ProduccionModel.FK_DetalleOrden_Medida">
+      <End Role="Medida" EntitySet="Medida" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrden_Orden" Association="ProduccionModel.FK_DetalleOrden_Orden">
+      <End Role="Orden" EntitySet="Orden" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrden_Producto" Association="ProduccionModel.FK_DetalleOrden_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrden_TipoMedida" Association="ProduccionModel.FK_DetalleOrden_TipoMedida">
+      <End Role="TipoMedida" EntitySet="TipoMedida" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrden_TipoProducto" Association="ProduccionModel.FK_DetalleOrden_TipoProducto">
+      <End Role="TipoProducto" EntitySet="TipoProducto" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaProduccion_DetalleOrden1" Association="ProduccionModel.FK_LineaProduccion_DetalleOrden1">
+      <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+      <End Role="LineaProduccion" EntitySet="LineaProduccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaProduccion_Empleado" Association="ProduccionModel.FK_LineaProduccion_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="LineaProduccion" EntitySet="LineaProduccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Empresas" Association="ProduccionModel.FK_Usuarios_Empresas">
+      <End Role="Empresas" EntitySet="Empresas" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaProduccion_Lugar" Association="ProduccionModel.FK_LineaProduccion_Lugar">
+      <End Role="Lugar" EntitySet="Lugar" />
+      <End Role="LineaProduccion" EntitySet="LineaProduccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaProduccion_Posicion" Association="ProduccionModel.FK_LineaProduccion_Posicion">
+      <End Role="Posicion" EntitySet="Posicion" />
+      <End Role="LineaProduccion" EntitySet="LineaProduccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Posicion_Maquina" Association="ProduccionModel.FK_Posicion_Maquina">
+      <End Role="Maquina" EntitySet="Maquina" />
+      <End Role="Posicion" EntitySet="Posicion" />
+    </AssociationSet>
+    <EntitySet Name="TipoProductoPosicion" EntityType="ProduccionModel.TipoProductoPosicion" />
+    <AssociationSet Name="FK_TipoProductoPosicion_Posicion" Association="ProduccionModel.FK_TipoProductoPosicion_Posicion">
+      <End Role="Posicion" EntitySet="Posicion" />
+      <End Role="TipoProductoPosicion" EntitySet="TipoProductoPosicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoProductoPosicion_TipoProducto" Association="ProduccionModel.FK_TipoProductoPosicion_TipoProducto">
+      <End Role="TipoProducto" EntitySet="TipoProducto" />
+      <End Role="TipoProductoPosicion" EntitySet="TipoProductoPosicion" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="pa_cons_cliente_Result">
+    <Property Type="Int32" Name="IdCliente" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="pa_cons_estilo_Result">
+    <Property Type="Int32" Name="IdEstilo" Nullable="false" />
+    <Property Type="String" Name="codestilo" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="pa_cons_lugar_Result">
+    <Property Type="Int32" Name="IdLugar" Nullable="false" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="pa_cons_maquina_Result">
+    <Property Type="Int32" Name="IdMaquina" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="pa_cons_produccion_Result">
+    <Property Type="Int32" Name="IdLineaProduccion" Nullable="false" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
+    <Property Type="Int32" Name="IdCorte" Nullable="false" />
+    <Property Type="Int32" Name="IdPosicion" Nullable="false" />
+    <Property Type="String" Name="talla" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="valorposicion" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="valorproduccion" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Boolean" Name="vigente" Nullable="false" />
+    <Property Type="Int32" Name="IdLugar" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="pa_cons_tipotalla_Result">
+    <Property Type="Int32" Name="IdTipoTalla" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="pa_obtenerPosicion_Result">
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idposicion" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="pa_obtenerPosicionCorte_Result">
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idposicion" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="pa_reporteProduccion_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdCorte" Nullable="false" />
+    <Property Type="Int32" Name="IdPosicion" Nullable="false" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="valorposicion" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="valorproduccion" Nullable="false" Precision="19" Scale="4" />
+  </ComplexType>
+  <ComplexType Name="pa_select_chequeaproduccion_Result">
+    <Property Type="String" Name="CodCorte" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CodEstilos" Nullable="true" />
+    <Property Type="String" Name="DescEstilo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Talla" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="CantidadRequerida" Nullable="true" />
+    <Property Type="Int32" Name="CodPosicion" Nullable="true" />
+    <Property Type="String" Name="DescPosicion" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Porcentaje" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="CantidadAcumulada" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="pa_select_chequeaproduccionDetalle_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+    <Property Type="String" Name="CodCorte" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CodPosicion" Nullable="true" />
+    <Property Type="String" Name="DescPosicion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="cantidad" Nullable="true" />
+    <Property Type="Int32" Name="CodEmpleado" Nullable="true" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="pa_select_estiloposicion_Result">
+    <Property Type="Int32" Name="IdPosicion" Nullable="false" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="tiempo" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="cuota" Nullable="false" />
+    <Property Type="Decimal" Name="valor" Nullable="false" Precision="19" Scale="4" />
+  </ComplexType>
+  <ComplexType Name="pa_select_estilos_Result">
+    <Property Type="Int32" Name="IdEstilo" Nullable="false" />
+    <Property Type="String" Name="codestilo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="estilo" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdPosicion" Nullable="false" />
+    <Property Type="String" Name="posicion" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="cuota" Nullable="false" />
+    <Property Type="Decimal" Name="valor" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="tiempo" Nullable="false" Precision="19" Scale="4" />
+  </ComplexType>
+  <ComplexType Name="pa_select_ganadoconsemana_Result">
+    <Property Type="Int32" Name="CodEmpleado" Nullable="true" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Semana" Nullable="true" />
+    <Property Type="Int32" Name="Dias" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+    <Property Type="String" Name="Codcorte" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CodPosicion" Nullable="true" />
+    <Property Type="String" Name="DescPosicion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ValorPosicion" Nullable="true" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="pa_select_informedeestilosposicion_Result">
+    <Property Type="String" Name="Lugar" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdPosicion" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Maquina" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Tiempo" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="Cuota" Nullable="false" />
+    <Property Type="Decimal" Name="Valor" Nullable="false" Precision="19" Scale="4" />
+  </ComplexType>
+  <ComplexType Name="pa_select_informedeposiciones_Result">
+    <Property Type="String" Name="CodCorte" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdPosicion" Nullable="false" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Lugar" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="pa_select_informeposiciones_Result">
+    <Property Type="String" Name="CodCorte" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdPosicion" Nullable="false" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="descripcion1" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="pa_select_parametros_Result">
+    <Property Type="Decimal" Name="HorasTrabajo" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="Mes" Nullable="true" />
+    <Property Type="Int32" Name="Año" Nullable="true" />
+    <Property Type="Int32" Name="Paquete" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="pa_select_posiciones_Result">
+    <Property Type="Int32" Name="IdPosicion" Nullable="false" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Maquina" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="cuota" Nullable="false" />
+    <Property Type="Decimal" Name="valor" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="tiempo" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="String" Name="Lugar" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="vigente" Nullable="false" MaxLength="2" />
+  </ComplexType>
+  <ComplexType Name="pa_select_produccionbajoporcentaje_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+    <Property Type="Int32" Name="CodEmpleado" Nullable="true" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Codcorte" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPosicion" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Cuota" Nullable="true" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="PorcProduccion" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="pa_select_produccionposicion_Result">
+    <Property Type="String" Name="Codcorte" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CodPosicion" Nullable="true" />
+    <Property Type="String" Name="DescPosicion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Cuota" Nullable="true" />
+    <Property Type="String" Name="Empleado" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+    <Property Type="String" Name="Porcentaje" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="pa_select_semanas_Result">
+    <Property Type="Int32" Name="Semana" Nullable="true" />
+    <Property Type="DateTime" Name="Column1" Nullable="true" />
+    <Property Type="DateTime" Name="Column2" Nullable="true" />
+    <Property Type="Int32" Name="Dias" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="pa_select_totalganadotrabajador_Result">
+    <Property Type="Int32" Name="CodEmpleado" Nullable="true" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="PagarSinSemana" Nullable="true" />
+    <Property Type="Int32" Name="Semana" Nullable="true" />
+    <Property Type="Int32" Name="TotalPagar" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="pa_select_totalganadotrabajadordetalle_Result">
+    <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
+    <Property Type="String" Name="Nombres" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fecha" Nullable="true" />
+    <Property Type="String" Name="IdCorte" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdPosicion" Nullable="false" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="valorposicion" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="valorproduccion" Nullable="false" Precision="19" Scale="4" />
+  </ComplexType>
+  <EntityType Name="Catalogos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Catalogo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="ProduccionModel.FK_Usuarios_Catalogos" FromRole="Catalogos" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Orden" Relationship="ProduccionModel.FK_Orden_Cliente" FromRole="Cliente" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="DetalleOrden">
+    <Key>
+      <PropertyRef Name="IdDetalleOrden" />
+    </Key>
+    <Property Name="IdDetalleOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdOrden" Type="Int32" Nullable="false" />
+    <Property Name="IdProducto" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoProducto" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoMedida" Type="Int32" Nullable="false" />
+    <Property Name="IdMedida" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="Vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Medida" Relationship="ProduccionModel.FK_DetalleOrden_Medida" FromRole="DetalleOrden" ToRole="Medida" />
+    <NavigationProperty Name="Orden" Relationship="ProduccionModel.FK_DetalleOrden_Orden" FromRole="DetalleOrden" ToRole="Orden" />
+    <NavigationProperty Name="Producto" Relationship="ProduccionModel.FK_DetalleOrden_Producto" FromRole="DetalleOrden" ToRole="Producto" />
+    <NavigationProperty Name="TipoMedida" Relationship="ProduccionModel.FK_DetalleOrden_TipoMedida" FromRole="DetalleOrden" ToRole="TipoMedida" />
+    <NavigationProperty Name="TipoProducto" Relationship="ProduccionModel.FK_DetalleOrden_TipoProducto" FromRole="DetalleOrden" ToRole="TipoProducto" />
+    <NavigationProperty Name="LineaProduccion" Relationship="ProduccionModel.FK_LineaProduccion_DetalleOrden1" FromRole="DetalleOrden" ToRole="LineaProduccion" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rut" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="LineaProduccion" Relationship="ProduccionModel.FK_LineaProduccion_Empleado" FromRole="Empleado" ToRole="LineaProduccion" />
+  </EntityType>
+  <EntityType Name="Empresas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreEmpresa" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Moneda" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ZonaHoraria_Id" Type="Int32" />
+    <Property Name="Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_Id" Type="Int32" Nullable="false" />
+    <Property Name="Estatus" Type="Boolean" />
+    <NavigationProperty Name="Usuarios" Relationship="ProduccionModel.FK_Usuarios_Empresas" FromRole="Empresas" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="LineaProduccion">
+    <Key>
+      <PropertyRef Name="IdLineaProduccion" />
+    </Key>
+    <Property Name="IdLineaProduccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="IdDetalleOrden" Type="Int32" Nullable="false" />
+    <Property Name="IdPosicion" Type="Int32" Nullable="false" />
+    <Property Name="IdLugar" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="valorposicion" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="valorproduccion" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DetalleOrden" Relationship="ProduccionModel.FK_LineaProduccion_DetalleOrden1" FromRole="LineaProduccion" ToRole="DetalleOrden" />
+    <NavigationProperty Name="Empleado" Relationship="ProduccionModel.FK_LineaProduccion_Empleado" FromRole="LineaProduccion" ToRole="Empleado" />
+    <NavigationProperty Name="Lugar" Relationship="ProduccionModel.FK_LineaProduccion_Lugar" FromRole="LineaProduccion" ToRole="Lugar" />
+    <NavigationProperty Name="Posicion" Relationship="ProduccionModel.FK_LineaProduccion_Posicion" FromRole="LineaProduccion" ToRole="Posicion" />
+  </EntityType>
+  <EntityType Name="Lugar">
+    <Key>
+      <PropertyRef Name="IdLugar" />
+    </Key>
+    <Property Name="IdLugar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="LineaProduccion" Relationship="ProduccionModel.FK_LineaProduccion_Lugar" FromRole="Lugar" ToRole="LineaProduccion" />
+  </EntityType>
+  <EntityType Name="Maquina">
+    <Key>
+      <PropertyRef Name="IdMaquina" />
+    </Key>
+    <Property Name="IdMaquina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Posicion" Relationship="ProduccionModel.FK_Posicion_Maquina" FromRole="Maquina" ToRole="Posicion" />
+  </EntityType>
+  <EntityType Name="Medida">
+    <Key>
+      <PropertyRef Name="IdMedida" />
+    </Key>
+    <Property Name="IdMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DetalleOrden" Relationship="ProduccionModel.FK_DetalleOrden_Medida" FromRole="Medida" ToRole="DetalleOrden" />
+  </EntityType>
+  <EntityType Name="Orden">
+    <Key>
+      <PropertyRef Name="IdOrden" />
+    </Key>
+    <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="ProduccionModel.FK_Orden_Cliente" FromRole="Orden" ToRole="Cliente" />
+    <NavigationProperty Name="DetalleOrden" Relationship="ProduccionModel.FK_DetalleOrden_Orden" FromRole="Orden" ToRole="DetalleOrden" />
+  </EntityType>
+  <EntityType Name="Parametros">
+    <Key>
+      <PropertyRef Name="IdParamatros" />
+    </Key>
+    <Property Name="IdParamatros" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HorasTrabajo" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Mes" Type="Int32" />
+    <Property Name="Año" Type="Int32" />
+    <Property Name="Paquete" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Posicion">
+    <Key>
+      <PropertyRef Name="IdPosicion" />
+    </Key>
+    <Property Name="IdPosicion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdMaquina" Type="Int32" Nullable="false" />
+    <Property Name="cuota" Type="Int32" Nullable="false" />
+    <Property Name="valor" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="tiempo" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="LineaProduccion" Relationship="ProduccionModel.FK_LineaProduccion_Posicion" FromRole="Posicion" ToRole="LineaProduccion" />
+    <NavigationProperty Name="Maquina" Relationship="ProduccionModel.FK_Posicion_Maquina" FromRole="Posicion" ToRole="Maquina" />
+    <NavigationProperty Name="TipoProductoPosicion" Relationship="ProduccionModel.FK_TipoProductoPosicion_Posicion" FromRole="Posicion" ToRole="TipoProductoPosicion" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DetalleOrden" Relationship="ProduccionModel.FK_DetalleOrden_Producto" FromRole="Producto" ToRole="DetalleOrden" />
+  </EntityType>
+  <EntityType Name="Semanas">
+    <Key>
+      <PropertyRef Name="IdSemana" />
+    </Key>
+    <Property Name="IdSemana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mes" Type="Int32" />
+    <Property Name="Año" Type="Int32" />
+    <Property Name="Semana" Type="Int32" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Precision="3" />
+    <Property Name="Dias" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TipoMedida">
+    <Key>
+      <PropertyRef Name="IdTipoMedida" />
+    </Key>
+    <Property Name="IdTipoMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DetalleOrden" Relationship="ProduccionModel.FK_DetalleOrden_TipoMedida" FromRole="TipoMedida" ToRole="DetalleOrden" />
+  </EntityType>
+  <EntityType Name="TipoProducto">
+    <Key>
+      <PropertyRef Name="IdTipoProducto" />
+    </Key>
+    <Property Name="IdTipoProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DetalleOrden" Relationship="ProduccionModel.FK_DetalleOrden_TipoProducto" FromRole="TipoProducto" ToRole="DetalleOrden" />
+    <NavigationProperty Name="TipoProductoPosicion" Relationship="ProduccionModel.FK_TipoProductoPosicion_TipoProducto" FromRole="TipoProducto" ToRole="TipoProductoPosicion" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombres" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="Rol_Id" Type="Int32" Nullable="false" />
+    <Property Name="Token" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Catalogos" Relationship="ProduccionModel.FK_Usuarios_Catalogos" FromRole="Usuarios" ToRole="Catalogos" />
+    <NavigationProperty Name="Empresas" Relationship="ProduccionModel.FK_Usuarios_Empresas" FromRole="Usuarios" ToRole="Empresas" />
+  </EntityType>
+  <Association Name="FK_Usuarios_Catalogos">
+    <End Type="ProduccionModel.Catalogos" Role="Catalogos" Multiplicity="1" />
+    <End Type="ProduccionModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Cliente">
+    <End Type="ProduccionModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="ProduccionModel.Orden" Role="Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrden_Medida">
+    <End Type="ProduccionModel.Medida" Role="Medida" Multiplicity="1" />
+    <End Type="ProduccionModel.DetalleOrden" Role="DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medida">
+        <PropertyRef Name="IdMedida" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrden_Orden">
+    <End Type="ProduccionModel.Orden" Role="Orden" Multiplicity="1" />
+    <End Type="ProduccionModel.DetalleOrden" Role="DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orden">
+        <PropertyRef Name="IdOrden" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdOrden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrden_Producto">
+    <End Type="ProduccionModel.Producto" Role="Producto" Multiplicity="1" />
+    <End Type="ProduccionModel.DetalleOrden" Role="DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrden_TipoMedida">
+    <End Type="ProduccionModel.TipoMedida" Role="TipoMedida" Multiplicity="1" />
+    <End Type="ProduccionModel.DetalleOrden" Role="DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoMedida">
+        <PropertyRef Name="IdTipoMedida" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdTipoMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrden_TipoProducto">
+    <End Type="ProduccionModel.TipoProducto" Role="TipoProducto" Multiplicity="1" />
+    <End Type="ProduccionModel.DetalleOrden" Role="DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoProducto">
+        <PropertyRef Name="IdTipoProducto" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdTipoProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaProduccion_DetalleOrden1">
+    <End Type="ProduccionModel.DetalleOrden" Role="DetalleOrden" Multiplicity="1" />
+    <End Type="ProduccionModel.LineaProduccion" Role="LineaProduccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetalleOrden">
+        <PropertyRef Name="IdDetalleOrden" />
+      </Principal>
+      <Dependent Role="LineaProduccion">
+        <PropertyRef Name="IdDetalleOrden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaProduccion_Empleado">
+    <End Type="ProduccionModel.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="ProduccionModel.LineaProduccion" Role="LineaProduccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="LineaProduccion">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Empresas">
+    <End Type="ProduccionModel.Empresas" Role="Empresas" Multiplicity="1" />
+    <End Type="ProduccionModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaProduccion_Lugar">
+    <End Type="ProduccionModel.Lugar" Role="Lugar" Multiplicity="1" />
+    <End Type="ProduccionModel.LineaProduccion" Role="LineaProduccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lugar">
+        <PropertyRef Name="IdLugar" />
+      </Principal>
+      <Dependent Role="LineaProduccion">
+        <PropertyRef Name="IdLugar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaProduccion_Posicion">
+    <End Type="ProduccionModel.Posicion" Role="Posicion" Multiplicity="1" />
+    <End Type="ProduccionModel.LineaProduccion" Role="LineaProduccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posicion">
+        <PropertyRef Name="IdPosicion" />
+      </Principal>
+      <Dependent Role="LineaProduccion">
+        <PropertyRef Name="IdPosicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Posicion_Maquina">
+    <End Type="ProduccionModel.Maquina" Role="Maquina" Multiplicity="1" />
+    <End Type="ProduccionModel.Posicion" Role="Posicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maquina">
+        <PropertyRef Name="IdMaquina" />
+      </Principal>
+      <Dependent Role="Posicion">
+        <PropertyRef Name="IdMaquina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TipoProductoPosicion">
+    <Key>
+      <PropertyRef Name="IdTipoProductoPosicion" />
+    </Key>
+    <Property Name="IdTipoProductoPosicion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdTipoProducto" Type="Int32" Nullable="false" />
+    <Property Name="IdPosicion" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Posicion" Relationship="ProduccionModel.FK_TipoProductoPosicion_Posicion" FromRole="TipoProductoPosicion" ToRole="Posicion" />
+    <NavigationProperty Name="TipoProducto" Relationship="ProduccionModel.FK_TipoProductoPosicion_TipoProducto" FromRole="TipoProductoPosicion" ToRole="TipoProducto" />
+  </EntityType>
+  <Association Name="FK_TipoProductoPosicion_Posicion">
+    <End Type="ProduccionModel.Posicion" Role="Posicion" Multiplicity="1" />
+    <End Type="ProduccionModel.TipoProductoPosicion" Role="TipoProductoPosicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posicion">
+        <PropertyRef Name="IdPosicion" />
+      </Principal>
+      <Dependent Role="TipoProductoPosicion">
+        <PropertyRef Name="IdPosicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoProductoPosicion_TipoProducto">
+    <End Type="ProduccionModel.TipoProducto" Role="TipoProducto" Multiplicity="1" />
+    <End Type="ProduccionModel.TipoProductoPosicion" Role="TipoProductoPosicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoProducto">
+        <PropertyRef Name="IdTipoProducto" />
+      </Principal>
+      <Dependent Role="TipoProductoPosicion">
+        <PropertyRef Name="IdTipoProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

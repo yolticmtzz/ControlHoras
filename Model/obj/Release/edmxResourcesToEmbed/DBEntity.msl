@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProduccionModelStoreContainer" CdmEntityContainer="Entidades">
+    <FunctionImportMapping FunctionImportName="pa_cons_cliente" FunctionName="ProduccionModel.Store.pa_cons_cliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_cons_cliente_Result">
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_cons_estilo" FunctionName="ProduccionModel.Store.pa_cons_estilo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_cons_estilo_Result">
+          <ScalarProperty Name="IdEstilo" ColumnName="IdEstilo" />
+          <ScalarProperty Name="codestilo" ColumnName="codestilo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_cons_lugar" FunctionName="ProduccionModel.Store.pa_cons_lugar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_cons_lugar_Result">
+          <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_cons_maquina" FunctionName="ProduccionModel.Store.pa_cons_maquina">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_cons_maquina_Result">
+          <ScalarProperty Name="IdMaquina" ColumnName="IdMaquina" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_cons_produccion" FunctionName="ProduccionModel.Store.pa_cons_produccion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_cons_produccion_Result">
+          <ScalarProperty Name="IdLineaProduccion" ColumnName="IdLineaProduccion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="IdCorte" ColumnName="IdCorte" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="talla" ColumnName="talla" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="valorposicion" ColumnName="valorposicion" />
+          <ScalarProperty Name="valorproduccion" ColumnName="valorproduccion" />
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_cons_tipotalla" FunctionName="ProduccionModel.Store.pa_cons_tipotalla">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_cons_tipotalla_Result">
+          <ScalarProperty Name="IdTipoTalla" ColumnName="IdTipoTalla" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_del_cliente" FunctionName="ProduccionModel.Store.pa_del_cliente" />
+    <FunctionImportMapping FunctionImportName="pa_del_empleado" FunctionName="ProduccionModel.Store.pa_del_empleado" />
+    <FunctionImportMapping FunctionImportName="pa_del_estilo" FunctionName="ProduccionModel.Store.pa_del_estilo" />
+    <FunctionImportMapping FunctionImportName="pa_del_lugar" FunctionName="ProduccionModel.Store.pa_del_lugar" />
+    <FunctionImportMapping FunctionImportName="pa_del_maquina" FunctionName="ProduccionModel.Store.pa_del_maquina" />
+    <FunctionImportMapping FunctionImportName="pa_del_orden" FunctionName="ProduccionModel.Store.pa_del_orden" />
+    <FunctionImportMapping FunctionImportName="pa_del_posicion" FunctionName="ProduccionModel.Store.pa_del_posicion" />
+    <FunctionImportMapping FunctionImportName="pa_del_produccion" FunctionName="ProduccionModel.Store.pa_del_produccion" />
+    <FunctionImportMapping FunctionImportName="pa_del_talla" FunctionName="ProduccionModel.Store.pa_del_talla" />
+    <FunctionImportMapping FunctionImportName="pa_del_tipotalla" FunctionName="ProduccionModel.Store.pa_del_tipotalla" />
+    <FunctionImportMapping FunctionImportName="pa_ins_cliente" FunctionName="ProduccionModel.Store.pa_ins_cliente" />
+    <FunctionImportMapping FunctionImportName="pa_ins_empleado" FunctionName="ProduccionModel.Store.pa_ins_empleado" />
+    <FunctionImportMapping FunctionImportName="pa_ins_estilo" FunctionName="ProduccionModel.Store.pa_ins_estilo" />
+    <FunctionImportMapping FunctionImportName="pa_ins_lugar" FunctionName="ProduccionModel.Store.pa_ins_lugar" />
+    <FunctionImportMapping FunctionImportName="pa_ins_maquina" FunctionName="ProduccionModel.Store.pa_ins_maquina" />
+    <FunctionImportMapping FunctionImportName="pa_ins_orden" FunctionName="ProduccionModel.Store.pa_ins_orden" />
+    <FunctionImportMapping FunctionImportName="pa_ins_parametros" FunctionName="ProduccionModel.Store.pa_ins_parametros" />
+    <FunctionImportMapping FunctionImportName="pa_ins_posicion" FunctionName="ProduccionModel.Store.pa_ins_posicion" />
+    <FunctionImportMapping FunctionImportName="pa_ins_produccion" FunctionName="ProduccionModel.Store.pa_ins_produccion" />
+    <FunctionImportMapping FunctionImportName="pa_ins_semanas" FunctionName="ProduccionModel.Store.pa_ins_semanas" />
+    <FunctionImportMapping FunctionImportName="pa_ins_talla" FunctionName="ProduccionModel.Store.pa_ins_talla" />
+    <FunctionImportMapping FunctionImportName="pa_ins_tipo_talla" FunctionName="ProduccionModel.Store.pa_ins_tipo_talla" />
+    <FunctionImportMapping FunctionImportName="pa_ins_tipotalla" FunctionName="ProduccionModel.Store.pa_ins_tipotalla" />
+    <FunctionImportMapping FunctionImportName="pa_obtenerPosicion" FunctionName="ProduccionModel.Store.pa_obtenerPosicion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_obtenerPosicion_Result">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idposicion" ColumnName="idposicion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_obtenerPosicionCorte" FunctionName="ProduccionModel.Store.pa_obtenerPosicionCorte">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_obtenerPosicionCorte_Result">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idposicion" ColumnName="idposicion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_reporteProduccion" FunctionName="ProduccionModel.Store.pa_reporteProduccion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_reporteProduccion_Result">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="IdCorte" ColumnName="IdCorte" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="valorposicion" ColumnName="valorposicion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="valorproduccion" ColumnName="valorproduccion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_chequeaproduccion" FunctionName="ProduccionModel.Store.pa_select_chequeaproduccion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_chequeaproduccion_Result">
+          <ScalarProperty Name="CodCorte" ColumnName="CodCorte" />
+          <ScalarProperty Name="CodEstilos" ColumnName="CodEstilos" />
+          <ScalarProperty Name="DescEstilo" ColumnName="DescEstilo" />
+          <ScalarProperty Name="Talla" ColumnName="Talla" />
+          <ScalarProperty Name="CantidadRequerida" ColumnName="CantidadRequerida" />
+          <ScalarProperty Name="CodPosicion" ColumnName="CodPosicion" />
+          <ScalarProperty Name="DescPosicion" ColumnName="DescPosicion" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+          <ScalarProperty Name="CantidadAcumulada" ColumnName="CantidadAcumulada" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_chequeaproduccionDetalle" FunctionName="ProduccionModel.Store.pa_select_chequeaproduccionDetalle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_chequeaproduccionDetalle_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="CodCorte" ColumnName="CodCorte" />
+          <ScalarProperty Name="CodPosicion" ColumnName="CodPosicion" />
+          <ScalarProperty Name="DescPosicion" ColumnName="DescPosicion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="CodEmpleado" ColumnName="CodEmpleado" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_estiloposicion" FunctionName="ProduccionModel.Store.pa_select_estiloposicion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_estiloposicion_Result">
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+          <ScalarProperty Name="cuota" ColumnName="cuota" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_estilos" FunctionName="ProduccionModel.Store.pa_select_estilos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_estilos_Result">
+          <ScalarProperty Name="IdEstilo" ColumnName="IdEstilo" />
+          <ScalarProperty Name="codestilo" ColumnName="codestilo" />
+          <ScalarProperty Name="estilo" ColumnName="estilo" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="posicion" ColumnName="posicion" />
+          <ScalarProperty Name="cuota" ColumnName="cuota" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_ganadoconsemana" FunctionName="ProduccionModel.Store.pa_select_ganadoconsemana">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_ganadoconsemana_Result">
+          <ScalarProperty Name="CodEmpleado" ColumnName="CodEmpleado" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Semana" ColumnName="Semana" />
+          <ScalarProperty Name="Dias" ColumnName="Dias" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Codcorte" ColumnName="Codcorte" />
+          <ScalarProperty Name="CodPosicion" ColumnName="CodPosicion" />
+          <ScalarProperty Name="DescPosicion" ColumnName="DescPosicion" />
+          <ScalarProperty Name="ValorPosicion" ColumnName="ValorPosicion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_informedeestilosposicion" FunctionName="ProduccionModel.Store.pa_select_informedeestilosposicion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_informedeestilosposicion_Result">
+          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Maquina" ColumnName="Maquina" />
+          <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
+          <ScalarProperty Name="Cuota" ColumnName="Cuota" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_informedeposiciones" FunctionName="ProduccionModel.Store.pa_select_informedeposiciones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_informedeposiciones_Result">
+          <ScalarProperty Name="CodCorte" ColumnName="CodCorte" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_informeposiciones" FunctionName="ProduccionModel.Store.pa_select_informeposiciones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_informeposiciones_Result">
+          <ScalarProperty Name="CodCorte" ColumnName="CodCorte" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descripcion1" ColumnName="descripcion1" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_parametros" FunctionName="ProduccionModel.Store.pa_select_parametros">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_parametros_Result">
+          <ScalarProperty Name="HorasTrabajo" ColumnName="HorasTrabajo" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="Paquete" ColumnName="Paquete" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_posiciones" FunctionName="ProduccionModel.Store.pa_select_posiciones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_posiciones_Result">
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="Maquina" ColumnName="Maquina" />
+          <ScalarProperty Name="cuota" ColumnName="cuota" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_produccionbajoporcentaje" FunctionName="ProduccionModel.Store.pa_select_produccionbajoporcentaje">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_produccionbajoporcentaje_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="CodEmpleado" ColumnName="CodEmpleado" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Codcorte" ColumnName="Codcorte" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cuota" ColumnName="Cuota" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="PorcProduccion" ColumnName="PorcProduccion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_produccionposicion" FunctionName="ProduccionModel.Store.pa_select_produccionposicion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_produccionposicion_Result">
+          <ScalarProperty Name="Codcorte" ColumnName="Codcorte" />
+          <ScalarProperty Name="CodPosicion" ColumnName="CodPosicion" />
+          <ScalarProperty Name="DescPosicion" ColumnName="DescPosicion" />
+          <ScalarProperty Name="Cuota" ColumnName="Cuota" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_semanas" FunctionName="ProduccionModel.Store.pa_select_semanas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_semanas_Result">
+          <ScalarProperty Name="Semana" ColumnName="Semana" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+          <ScalarProperty Name="Dias" ColumnName="Dias" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_totalganadotrabajador" FunctionName="ProduccionModel.Store.pa_select_totalganadotrabajador">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_totalganadotrabajador_Result">
+          <ScalarProperty Name="CodEmpleado" ColumnName="CodEmpleado" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="PagarSinSemana" ColumnName="PagarSinSemana" />
+          <ScalarProperty Name="Semana" ColumnName="Semana" />
+          <ScalarProperty Name="TotalPagar" ColumnName="TotalPagar" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pa_select_totalganadotrabajadordetalle" FunctionName="ProduccionModel.Store.pa_select_totalganadotrabajadordetalle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProduccionModel.pa_select_totalganadotrabajadordetalle_Result">
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="IdCorte" ColumnName="IdCorte" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="valorposicion" ColumnName="valorposicion" />
+          <ScalarProperty Name="valorproduccion" ColumnName="valorproduccion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Catalogos">
+      <EntityTypeMapping TypeName="ProduccionModel.Catalogos">
+        <MappingFragment StoreEntitySet="Catalogos">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Catalogo" ColumnName="Catalogo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="ProduccionModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleOrden">
+      <EntityTypeMapping TypeName="ProduccionModel.DetalleOrden">
+        <MappingFragment StoreEntitySet="DetalleOrden">
+          <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="IdMedida" ColumnName="IdMedida" />
+          <ScalarProperty Name="IdTipoMedida" ColumnName="IdTipoMedida" />
+          <ScalarProperty Name="IdTipoProducto" ColumnName="IdTipoProducto" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+          <ScalarProperty Name="IdDetalleOrden" ColumnName="IdDetalleOrden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="ProduccionModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="rut" ColumnName="rut" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresas">
+      <EntityTypeMapping TypeName="ProduccionModel.Empresas">
+        <MappingFragment StoreEntitySet="Empresas">
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="ZonaHoraria_Id" ColumnName="ZonaHoraria_Id" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="NombreEmpresa" ColumnName="NombreEmpresa" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LineaProduccion">
+      <EntityTypeMapping TypeName="ProduccionModel.LineaProduccion">
+        <MappingFragment StoreEntitySet="LineaProduccion">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="valorproduccion" ColumnName="valorproduccion" />
+          <ScalarProperty Name="valorposicion" ColumnName="valorposicion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="IdDetalleOrden" ColumnName="IdDetalleOrden" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="IdLineaProduccion" ColumnName="IdLineaProduccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lugar">
+      <EntityTypeMapping TypeName="ProduccionModel.Lugar">
+        <MappingFragment StoreEntitySet="Lugar">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maquina">
+      <EntityTypeMapping TypeName="ProduccionModel.Maquina">
+        <MappingFragment StoreEntitySet="Maquina">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="IdMaquina" ColumnName="IdMaquina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medida">
+      <EntityTypeMapping TypeName="ProduccionModel.Medida">
+        <MappingFragment StoreEntitySet="Medida">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="IdMedida" ColumnName="IdMedida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orden">
+      <EntityTypeMapping TypeName="ProduccionModel.Orden">
+        <MappingFragment StoreEntitySet="Orden">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="referencia" ColumnName="referencia" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parametros">
+      <EntityTypeMapping TypeName="ProduccionModel.Parametros">
+        <MappingFragment StoreEntitySet="Parametros">
+          <ScalarProperty Name="Paquete" ColumnName="Paquete" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="HorasTrabajo" ColumnName="HorasTrabajo" />
+          <ScalarProperty Name="IdParamatros" ColumnName="IdParamatros" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posicion">
+      <EntityTypeMapping TypeName="ProduccionModel.Posicion">
+        <MappingFragment StoreEntitySet="Posicion">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="cuota" ColumnName="cuota" />
+          <ScalarProperty Name="IdMaquina" ColumnName="IdMaquina" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="ProduccionModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Semanas">
+      <EntityTypeMapping TypeName="ProduccionModel.Semanas">
+        <MappingFragment StoreEntitySet="Semanas">
+          <ScalarProperty Name="Dias" ColumnName="Dias" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="Semana" ColumnName="Semana" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="IdSemana" ColumnName="IdSemana" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoMedida">
+      <EntityTypeMapping TypeName="ProduccionModel.TipoMedida">
+        <MappingFragment StoreEntitySet="TipoMedida">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="IdTipoMedida" ColumnName="IdTipoMedida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoProducto">
+      <EntityTypeMapping TypeName="ProduccionModel.TipoProducto">
+        <MappingFragment StoreEntitySet="TipoProducto">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="IdTipoProducto" ColumnName="IdTipoProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="ProduccionModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoProductoPosicion">
+      <EntityTypeMapping TypeName="ProduccionModel.TipoProductoPosicion">
+        <MappingFragment StoreEntitySet="TipoProductoPosicion">
+          <ScalarProperty Name="vigente" ColumnName="vigente" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="IdTipoProducto" ColumnName="IdTipoProducto" />
+          <ScalarProperty Name="IdTipoProductoPosicion" ColumnName="IdTipoProductoPosicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

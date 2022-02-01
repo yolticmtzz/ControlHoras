@@ -1,0 +1,71 @@
+﻿@using Model;
+@model List<Empleado>
+@{
+    Layout = null;
+}
+
+<section class="content">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Listado De Consultores</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalAgregarEmpleado">Agregar Consultor</button>
+                        </div>
+
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <table id="empleados" class="table table-bordered table-hover" style="width:100%">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Perfil</th>
+                                    <th>Nombre</th>
+                                    <th>Rut</th>
+                                    <th>Correo</th>
+                                    <th>Ultimo Login</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.IdEmpleado</td>
+                                    <td>@item.Perfil.Descripcion</td>
+                                    <td>@item.Nombre</td>
+                                    <td>@item.Rut</td>
+                                    <td>@item.Correo</td>
+                                    <td>@item.UltimoLogin</td>
+                                    <td>
+                                        <button class="btn btn-warning btnEditarEmpleado" idempleado="@item.IdEmpleado" data-toggle="modal" data-target="#modalEditarProyecto" title="Editar"> Editar <i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btnAnularEmpleado" idempleado="@item.IdEmpleado" title="Anular">Eliminar <i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+</section>

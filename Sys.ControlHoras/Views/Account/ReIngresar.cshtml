@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<div class="login-box">
+
+    <div class="login-logo">
+
+
+        <a href=""><b>SOINDUS</b></a>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-body login-card-body">
+
+            <p class="login-box-msg">Cambio de contraseña</p>
+
+            <form role="form" method="post" enctype="multipart/form-data" class="formAjaxAdd">
+
+                <div class="input-group mb-3">
+
+                    <input type="password" name="antiguaClave" class="form-control" placeholder="Clave antigua">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock pass"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="input-group mb-3">
+
+                    <input type="password" name="nuevaClave" class="form-control" placeholder="Clave nueva">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock pass"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="input-group mb-3">
+
+                    <input type="password" name="repetirNuevaClave" class="form-control" placeholder="Repita nueva clave">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock" pass></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <!-- /.col -->
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block btnAjaxAdd">Cambiar contraseña</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+@section scripts
+{
+    <script src="~/Content/js/usuario-pass.js"></script>
+
+}

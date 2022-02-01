@@ -1,0 +1,68 @@
+﻿@using Model
+@model List<IngresoHora>
+@{
+    Layout = null;
+}
+
+<section class="content">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Listado De Horas</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalAgregarHora">Agregar Hora</button>
+                        </div>
+
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <table id="horas" class="table table-bordered table-hover" style="width:100%">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Proyecto</th>
+                                    <th>Cliente</th>
+                                    <th>Fecha De Asignación</th>
+                                    <th>Hora asignada</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ProyectoEmpleado.Proyecto.Descripcion</td>
+                                        <td>@item.ProyectoEmpleado.Proyecto.Cliente.Nombre</td>
+                                        <td>@item.Fecha.ToString("yyyy-MM-dd")</td>
+                                        <td>@Math.Round(item.Hora, 1).ToString().Replace(',','.')</td>
+                                        <td>
+                                            <button class="btn btn-warning btnEditarHora" idingresohora="@item.IdIngresoHora" data-toggle="modal" data-target="#modalEditarHora" title="Editar"> Editar <i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-danger btnAnularhora" idingresohora="@item.IdIngresoHora" title="Anular">Eliminar <i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+

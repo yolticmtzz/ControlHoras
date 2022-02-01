@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ControlHoraProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bitacora">
+    <Key>
+      <PropertyRef Name="IdBitacora" />
+    </Key>
+    <Property Name="IdBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="Bitacora1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_Bitacora_Empleado" FromRole="Bitacora" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_Cliente" FromRole="Cliente" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UltimoLogin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdPerfil" Type="Int32" Nullable="false" />
+    <Property Name="Vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Bitacora" Relationship="Self.FK_Bitacora_Empleado" FromRole="Empleado" ToRole="Bitacora" />
+    <NavigationProperty Name="Perfil" Relationship="Self.FK_Empleado_Perfil" FromRole="Empleado" ToRole="Perfil" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_Empleado" FromRole="Empleado" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="IdMenu" />
+    </Key>
+    <Property Name="IdMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Clase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Archivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Icono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Privilegio" Relationship="Self.FK_Privilegio_Menu" FromRole="Menu" ToRole="Privilegio" />
+  </EntityType>
+  <EntityType Name="Perfil">
+    <Key>
+      <PropertyRef Name="IdPerfil" />
+    </Key>
+    <Property Name="IdPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Perfil" FromRole="Perfil" ToRole="Empleado" />
+    <NavigationProperty Name="PerfilPrivilegio" Relationship="Self.FK_PerfilPrivilegio_Perfil" FromRole="Perfil" ToRole="PerfilPrivilegio" />
+  </EntityType>
+  <EntityType Name="PerfilPrivilegio">
+    <Key>
+      <PropertyRef Name="IdPerfilPrivilegio" />
+    </Key>
+    <Property Name="IdPerfilPrivilegio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPerfil" Type="Int32" />
+    <Property Name="IdPrivilegio" Type="Int32" />
+    <NavigationProperty Name="Perfil" Relationship="Self.FK_PerfilPrivilegio_Perfil" FromRole="PerfilPrivilegio" ToRole="Perfil" />
+    <NavigationProperty Name="Privilegio" Relationship="Self.FK_PerfilPrivilegio_Privilegio" FromRole="PerfilPrivilegio" ToRole="Privilegio" />
+  </EntityType>
+  <EntityType Name="Privilegio">
+    <Key>
+      <PropertyRef Name="IdPrivilegio" />
+    </Key>
+    <Property Name="IdPrivilegio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdMenu" Type="Int32" Nullable="false" />
+    <Property Name="Orden" Type="Int16" Nullable="false" />
+    <Property Name="Archivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Icono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Menu" Relationship="Self.FK_Privilegio_Menu" FromRole="Privilegio" ToRole="Menu" />
+    <NavigationProperty Name="PerfilPrivilegio" Relationship="Self.FK_PerfilPrivilegio_Privilegio" FromRole="Privilegio" ToRole="PerfilPrivilegio" />
+  </EntityType>
+  <EntityType Name="Proyecto">
+    <Key>
+      <PropertyRef Name="IdProyecto" />
+    </Key>
+    <Property Name="IdProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Precision="3" />
+    <Property Name="HorasAsignada" Type="Int16" />
+    <Property Name="Vigente" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Proyecto_Cliente" FromRole="Proyecto" ToRole="Cliente" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_Proyecto_Empleado" FromRole="Proyecto" ToRole="Empleado" />
+  </EntityType>
+  <Association Name="FK_Bitacora_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Bitacora">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Perfil">
+    <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="IdPerfil" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="IdPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Privilegio_Menu">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="Privilegio" Type="Self.Privilegio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="IdMenu" />
+      </Principal>
+      <Dependent Role="Privilegio">
+        <PropertyRef Name="IdMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerfilPrivilegio_Perfil">
+    <End Role="Perfil" Type="Self.Perfil" Multiplicity="0..1" />
+    <End Role="PerfilPrivilegio" Type="Self.PerfilPrivilegio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="IdPerfil" />
+      </Principal>
+      <Dependent Role="PerfilPrivilegio">
+        <PropertyRef Name="IdPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerfilPrivilegio_Privilegio">
+    <End Role="Privilegio" Type="Self.Privilegio" Multiplicity="0..1" />
+    <End Role="PerfilPrivilegio" Type="Self.PerfilPrivilegio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Privilegio">
+        <PropertyRef Name="IdPrivilegio" />
+      </Principal>
+      <Dependent Role="PerfilPrivilegio">
+        <PropertyRef Name="IdPrivilegio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bitacora" EntityType="Self.Bitacora" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" />
+    <EntitySet Name="Perfil" EntityType="Self.Perfil" />
+    <EntitySet Name="PerfilPrivilegio" EntityType="Self.PerfilPrivilegio" />
+    <EntitySet Name="Privilegio" EntityType="Self.Privilegio" />
+    <EntitySet Name="Proyecto" EntityType="Self.Proyecto" />
+    <AssociationSet Name="FK_Bitacora_Empleado" Association="Self.FK_Bitacora_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Bitacora" EntitySet="Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_Cliente" Association="Self.FK_Proyecto_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Perfil" Association="Self.FK_Empleado_Perfil">
+      <End Role="Perfil" EntitySet="Perfil" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_Empleado" Association="Self.FK_Proyecto_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Privilegio_Menu" Association="Self.FK_Privilegio_Menu">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="Privilegio" EntitySet="Privilegio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PerfilPrivilegio_Perfil" Association="Self.FK_PerfilPrivilegio_Perfil">
+      <End Role="Perfil" EntitySet="Perfil" />
+      <End Role="PerfilPrivilegio" EntitySet="PerfilPrivilegio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PerfilPrivilegio_Privilegio" Association="Self.FK_PerfilPrivilegio_Privilegio">
+      <End Role="Privilegio" EntitySet="Privilegio" />
+      <End Role="PerfilPrivilegio" EntitySet="PerfilPrivilegio" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
